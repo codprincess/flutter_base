@@ -1,0 +1,43 @@
+name: flutter_base #应用或包名称
+description: A new Flutter project. #应用或包的描述、简介
+publish_to: 'none' # 是否发布到pub.dev，不发发布none，发布删掉即可
+version: 1.0.0+1 # 应用或包的版本号
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies: #应用或包依赖的其他包或插件
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  fancy_bottom_navigation_2: ^0.3.5
+  ele_progress: ^0.0.1
+  # 在此下面添加新依赖
+
+dev_dependencies: # 开发环境依赖的工具包（而不是flutter应用本身依赖的包）
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter: # flutter相关的配置选项
+  uses-material-design: true
+
+  # 图片资源配置
+  assets:
+    - images/
+  #     - images/a_dot_ham.jpeg
+
+  #配置字体文件资源
+  #   fonts:
+  #     - family: Schyler
+  #       fonts:
+  #         - asset: fonts/Schyler-Regular.ttf
+  #         - asset: fonts/Schyler-Italic.ttf
+  #           style: italic
+  #     - family: Trajan Pro
+  #       fonts:
+  #         - asset: fonts/TrajanPro.ttf
+  #         - asset: fonts/TrajanPro_Bold.ttf
+  #           weight: 700
+
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
