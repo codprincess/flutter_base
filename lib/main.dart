@@ -21,9 +21,9 @@ import 'package:flutter_base/SvPage.dart';
 import 'package:flutter_base/TestPage.dart';
 import 'package:flutter_base/TextPage.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
-
 import 'CustomScrollViewPage.dart';
 import 'RoutePage.dart';
+import 'SliverAppBarPage.dart';
 import 'SliverGridPage.dart';
 
 void main() => runApp(const MyApp());
@@ -66,7 +66,8 @@ class MyApp extends StatelessWidget {
         'pageview_page':(context)=>PageViewPage(),
         'CustomScrollView_Page':(context)=>CustomScrollViewPage(),
         'SliverAnimatedList_page':(context)=>SliverAnimatedListPage(),
-        'SliverGrid_Page':(context)=>SliverGridPage()
+        'SliverGrid_Page':(context)=>SliverGridPage(),
+        'SliverAppBar_Page':(context)=>SliverAppBarPage(),
       },
     );
   }
@@ -239,6 +240,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, 'SliverGrid_Page');
                 },
                 child: const Text(' SliverGrid'),
+              ),
+
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'SliverAppBar_Page');
+                },
+                child: const Text('SliverAppBar'),
               ),
 
               ElevatedButton(
