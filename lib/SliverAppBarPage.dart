@@ -24,6 +24,7 @@ class _SliverAppBarPageState extends State<SliverAppBarPage> {
                 title: const Text('移动标题'),
                 centerTitle: true,
                 collapseMode: CollapseMode.pin,
+                stretchModes: const [StretchMode.fadeTitle],
               ),
               title: const Text('标题'),//标题
               expandedHeight: 200,//展开高度
