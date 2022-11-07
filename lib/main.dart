@@ -17,6 +17,7 @@ import 'package:flutter_base/PageViewPage.dart';
 import 'package:flutter_base/RowPage.dart';
 import 'package:flutter_base/ScaffoldPage.dart';
 import 'package:flutter_base/SliverAnimatedListPage.dart';
+import 'package:flutter_base/SliverPersistentHeaderPage.dart';
 import 'package:flutter_base/SvPage.dart';
 import 'package:flutter_base/TestPage.dart';
 import 'package:flutter_base/TextPage.dart';
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
         'SliverAnimatedList_page':(context)=>SliverAnimatedListPage(),
         'SliverGrid_Page':(context)=>SliverGridPage(),
         'SliverAppBar_Page':(context)=>SliverAppBarPage(),
+        'SliverPersistentHeader_Page':(context)=>SliverPersistentHeaderPage()
       },
     );
   }
@@ -247,6 +249,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, 'SliverAppBar_Page');
                 },
                 child: const Text('SliverAppBar'),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'SliverPersistentHeader_Page');
+                },
+                child: const Text('SliverPersistentHeader'),
               ),
 
               ElevatedButton(
