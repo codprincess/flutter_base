@@ -23,6 +23,7 @@ import 'package:flutter_base/SliverToBoxAdapterPage.dart';
 import 'package:flutter_base/SvPage.dart';
 import 'package:flutter_base/TestPage.dart';
 import 'package:flutter_base/TextPage.dart';
+import 'package:flutter_base/SliverOpacityPage.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
 import 'CustomScrollViewPage.dart';
 import 'RoutePage.dart';
@@ -77,11 +78,13 @@ class MyApp extends StatelessWidget {
         'SliverToBoxAdapter_Page':(context)=>SliverToBoxAdapterPage(),
         'SliverFillViewport_Page':(context)=>SliverFillViewportPage(),
         'SliverPrototypeExtentList_Page':(context)=>SliverPrototypeExtentListPage(),
-        'SliverPadding_Page':(context)=>SliverPaddingPage()
+        'SliverPadding_Page':(context)=>SliverPaddingPage(),
+        'SliverOpacity_Page':(context)=>SliverOpacityPage(),
       },
     );
   }
 }
+
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -288,6 +291,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, 'SliverPadding_Page');
                 },
                 child: const Text('SliverPadding'),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'SliverOpacity_Page');
+                },
+                child: const Text('SliverOpacity'),
               ),
 
 
