@@ -32,6 +32,7 @@ import 'SliverAppBarPage.dart';
 import 'SliverFillViewportPage.dart';
 import 'SliverGridPage.dart';
 import 'SliverPrototypeExtentListPage.dart';
+import 'SliverVisibilityPage.dart';
 
 void main() => runApp(const MyApp());
 
@@ -81,7 +82,8 @@ class MyApp extends StatelessWidget {
         'SliverPrototypeExtentList_Page':(context)=>SliverPrototypeExtentListPage(),
         'SliverPadding_Page':(context)=>SliverPaddingPage(),
         'SliverOpacity_Page':(context)=>SliverOpacityPage(),
-        'SliverAnimatedOpacity_Page':(context)=>SliverAnimatedOpacityPage()
+        'SliverAnimatedOpacity_Page':(context)=>SliverAnimatedOpacityPage(),
+        'SliverVisibility_Page':(context)=>SliverVisibilityPage()
       },
     );
   }
@@ -306,6 +308,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, 'SliverAnimatedOpacity_Page');
                 },
                 child: const Text('SliverAnimatedOpacity'),
+              ),
+
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'SliverVisibility_Page');
+                },
+                child: const Text('SliverVisibility'),
               ),
 
               ElevatedButton(
