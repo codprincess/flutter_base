@@ -28,6 +28,7 @@ import 'RoutePage.dart';
 import 'SliverAppBarPage.dart';
 import 'SliverFillViewportPage.dart';
 import 'SliverGridPage.dart';
+import 'SliverPrototypeExtentListPage.dart';
 
 void main() => runApp(const MyApp());
 
@@ -73,7 +74,8 @@ class MyApp extends StatelessWidget {
         'SliverAppBar_Page':(context)=>SliverAppBarPage(),
         'SliverPersistentHeader_Page':(context)=>SliverPersistentHeaderPage(),
         'SliverToBoxAdapter_Page':(context)=>SliverToBoxAdapterPage(),
-        'SliverFillViewport_Page':(context)=>SliverFillViewportPage()
+        'SliverFillViewport_Page':(context)=>SliverFillViewportPage(),
+        'SliverPrototypeExtentList_Page':(context)=>SliverPrototypeExtentListPage()
       },
     );
   }
@@ -271,6 +273,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, 'SliverFillViewport_Page');
                 },
                 child: const Text('SliverFillViewport'),
+              ),
+
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'SliverPrototypeExtentList_Page');
+                },
+                child: const Text('SliverPrototypeExtentList'),
               ),
 
               ElevatedButton(
