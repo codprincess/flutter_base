@@ -17,6 +17,7 @@ import 'package:flutter_base/PageViewPage.dart';
 import 'package:flutter_base/RowPage.dart';
 import 'package:flutter_base/ScaffoldPage.dart';
 import 'package:flutter_base/SliverAnimatedListPage.dart';
+import 'package:flutter_base/SliverAnimatedOpacityPage.dart';
 import 'package:flutter_base/SliverPaddingPage.dart';
 import 'package:flutter_base/SliverPersistentHeaderPage.dart';
 import 'package:flutter_base/SliverToBoxAdapterPage.dart';
@@ -80,6 +81,7 @@ class MyApp extends StatelessWidget {
         'SliverPrototypeExtentList_Page':(context)=>SliverPrototypeExtentListPage(),
         'SliverPadding_Page':(context)=>SliverPaddingPage(),
         'SliverOpacity_Page':(context)=>SliverOpacityPage(),
+        'SliverAnimatedOpacity_Page':(context)=>SliverAnimatedOpacityPage()
       },
     );
   }
@@ -299,6 +301,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: const Text('SliverOpacity'),
               ),
 
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'SliverAnimatedOpacity_Page');
+                },
+                child: const Text('SliverAnimatedOpacity'),
+              ),
 
               ElevatedButton(
                 onPressed: (){
