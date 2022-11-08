@@ -21,7 +21,7 @@ class  SliverPrototypeExtentListPage extends StatelessWidget {
                 ),
               ]),
               prototypeItem: const SizedBox(
-                height: 200,//所有容器将获得原型中定义的150px高度
+                height: 200,//所有容器将获得原型中定义的200px高度
               )
             )
         ],
