@@ -22,6 +22,7 @@ import 'package:flutter_base/SliverFadeTransitionPage.dart';
 import 'package:flutter_base/SliverLayoutBuilderPage.dart';
 import 'package:flutter_base/SliverPaddingPage.dart';
 import 'package:flutter_base/SliverPersistentHeaderPage.dart';
+import 'package:flutter_base/SliverSafeAreaPage.dart';
 import 'package:flutter_base/SliverToBoxAdapterPage.dart';
 import 'package:flutter_base/SvPage.dart';
 import 'package:flutter_base/TestPage.dart';
@@ -88,6 +89,7 @@ class MyApp extends StatelessWidget {
         'SliverVisibility_Page':(context)=>SliverVisibilityPage(),
         'SliverFadeTransition_Page':(context)=>SliverFadeTransitionPage(),
         'SliverLayoutBuilder_Page':(context)=>SliverLayoutBuilderPage(),
+        'SliverSafeArea_Page':(context)=>SliverSafeAreaPage(),
       },
     );
   }
@@ -332,6 +334,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text('SliverLayoutBuilder'),
               ),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'SliverSafeArea_Page');
+                },
+                child: const Text('SliverSafeArea'),
+              ),
+
+
 
 
 

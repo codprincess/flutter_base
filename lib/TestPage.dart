@@ -13,15 +13,38 @@ class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('测试页面'),),
-      body: ListView.builder(
-        itemBuilder: (BuildContext context,int index){
-          return ListTile(
-            title: Text('11111'),
-          );
-        },
+      body:WithSliverSafeArea()
+    );
+  }
 
-      ),
+  Widget WithSliverSafeArea(){
+    return CustomScrollView(
+      slivers: [
+        SliverSafeArea(
+          sliver: SliverPadding(
+            padding: const EdgeInsets.all(10),
+            sliver: SliverGrid(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 2,
+                mainAxisSpacing: 2,
+                childAspectRatio: 1,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context,int index){
+                  return Container(
+                    alignment: Alignment.center,
+                    color: Colors.red,
+                    child: Text('Item $index'),
+                  );
+                },
+                childCount: 20
+              ),
+            ),
+          )
+        )
+      ],
     );
   }
 }
+
