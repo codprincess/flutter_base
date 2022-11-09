@@ -3,7 +3,7 @@ import 'package:flutter_base/AnimatedListPage.dart';
 import 'package:flutter_base/AppPage.dart';
 import 'package:flutter_base/BorderPage.dart';
 import 'package:flutter_base/BottomAppBarPage.dart';
-import 'package:flutter_base/BoxPage.dart';
+import 'package:flutter_base/BoxDecorationPage.dart';
 import 'package:flutter_base/FromPage.dart';
 import 'package:flutter_base/FromRadio.dart';
 import 'package:flutter_base/GridViewPage.dart';
@@ -68,7 +68,8 @@ class MyApp extends StatelessWidget {
         // 'indicator_page':(context)=>IndicatorPage(),
         'dialog_page':(context)=>showBottomSheetPage(),
         'border_page':(context)=>BorderPage(),
-        'box_page':(context)=>BoxPage(),
+
+        'BoxDecoration_Page':(context)=>BoxDecorationPage(),
         'sv_page':(context)=>SvPage(),
         'listview_page':(context)=>ListViewPage(),
         'test_page':(context)=>TestPage(),
@@ -209,9 +210,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
               ElevatedButton(
                 onPressed: (){
-                  Navigator.pushNamed(context, 'box_page');
+                  Navigator.pushNamed(context, 'BoxDecoration_Page');
                 },
-                child: const Text('盒子模型'),
+                child: const Text('BoxDecoration'),
               ),
 
               ElevatedButton(
