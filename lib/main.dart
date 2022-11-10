@@ -30,6 +30,7 @@ import 'package:flutter_base/TextPage.dart';
 import 'package:flutter_base/SliverOpacityPage.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
 import 'CustomScrollViewPage.dart';
+import 'FlowViewPage.dart';
 import 'RoutePage.dart';
 import 'SliverAppBarPage.dart';
 import 'SliverFillViewportPage.dart';
@@ -91,6 +92,7 @@ class MyApp extends StatelessWidget {
         'SliverFadeTransition_Page':(context)=>SliverFadeTransitionPage(),
         'SliverLayoutBuilder_Page':(context)=>SliverLayoutBuilderPage(),
         'SliverSafeArea_Page':(context)=>SliverSafeAreaPage(),
+        'FlowView_Page':(context)=>FlowViewPage(),
       },
     );
   }
@@ -115,10 +117,11 @@ class _MyHomePageState extends State<MyHomePage> {
         physics: PageScrollPhysics(),
         child: Container(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+          child: Wrap(
+            spacing: 8.0,//主轴(水平)方向间距
+            runSpacing: 4.0,//纵轴方向间距
+            alignment: WrapAlignment.start,//沿主轴
             children:  <Widget>[
-              const Text('点击按钮跳转到相应页面',style: TextStyle(fontSize: 20.0),),
               ElevatedButton(
                   onPressed: (){
                     Navigator.pushNamed(context, 'text_page');
@@ -341,21 +344,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text('SliverSafeArea'),
               ),
-
-
-
-
-
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'FlowView_Page');
+                },
+                child: const Text('瀑布流插件'),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'test_page');
+                },
+                child: const Text('测试页面214535634'),
+              ),
               ElevatedButton(
                 onPressed: (){
                   Navigator.pushNamed(context, 'test_page');
                 },
                 child: const Text('测试页面'),
               ),
-
-
-
-
 
 
             ],
