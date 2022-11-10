@@ -12,6 +12,7 @@ import 'package:flutter_base/IndicatorPage.dart';
 import 'package:flutter_base/LayoutPage.dart';
 import 'package:flutter_base/ListViewPage.dart';
 import 'package:flutter_base/LoginPage.dart';
+import 'package:flutter_base/NestedScrollViewPage.dart';
 import 'package:flutter_base/PaddingPage.dart';
 import 'package:flutter_base/PageViewPage.dart';
 import 'package:flutter_base/RowPage.dart';
@@ -93,6 +94,7 @@ class MyApp extends StatelessWidget {
         'SliverLayoutBuilder_Page':(context)=>SliverLayoutBuilderPage(),
         'SliverSafeArea_Page':(context)=>SliverSafeAreaPage(),
         'FlowView_Page':(context)=>FlowViewPage(),
+        'NestedScrollView_Page':(context)=>NestedScrollViewPage()
       },
     );
   }
@@ -343,6 +345,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, 'SliverSafeArea_Page');
                 },
                 child: const Text('SliverSafeArea'),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'NestedScrollView_Page');
+                },
+                child: const Text('NestedScrollView'),
               ),
               ElevatedButton(
                 onPressed: (){
