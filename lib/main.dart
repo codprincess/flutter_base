@@ -29,6 +29,7 @@ import 'package:flutter_base/SvPage.dart';
 import 'package:flutter_base/TestPage.dart';
 import 'package:flutter_base/TextPage.dart';
 import 'package:flutter_base/SliverOpacityPage.dart';
+import 'package:flutter_base/WillPopScopePage.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
 import 'CustomScrollViewPage.dart';
 import 'FlowViewPage.dart';
@@ -94,7 +95,8 @@ class MyApp extends StatelessWidget {
         'SliverLayoutBuilder_Page':(context)=>SliverLayoutBuilderPage(),
         'SliverSafeArea_Page':(context)=>SliverSafeAreaPage(),
         'FlowView_Page':(context)=>FlowViewPage(),
-        'NestedScrollView_Page':(context)=>NestedScrollViewPage()
+        'NestedScrollView_Page':(context)=>NestedScrollViewPage(),
+        'WillPopScope_Page':(context)=>WillPopScopePage()
       },
     );
   }
@@ -351,6 +353,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, 'NestedScrollView_Page');
                 },
                 child: const Text('NestedScrollView'),
+              ),
+
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'WillPopScope_Page');
+                },
+                child: const Text('WillPopScope'),
               ),
               ElevatedButton(
                 onPressed: (){
