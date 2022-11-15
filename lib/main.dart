@@ -33,6 +33,7 @@ import 'package:flutter_base/WillPopScopePage.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
 import 'CustomScrollViewPage.dart';
 import 'FlowViewPage.dart';
+import 'InheritedWidgetPage.dart';
 import 'RoutePage.dart';
 import 'SliverAppBarPage.dart';
 import 'SliverFillViewportPage.dart';
@@ -96,7 +97,8 @@ class MyApp extends StatelessWidget {
         'SliverSafeArea_Page':(context)=>SliverSafeAreaPage(),
         'FlowView_Page':(context)=>FlowViewPage(),
         'NestedScrollView_Page':(context)=>NestedScrollViewPage(),
-        'WillPopScope_Page':(context)=>WillPopScopePage()
+        'WillPopScope_Page':(context)=>WillPopScopePage(),
+        'InheritedWidget_Page':(context)=>InheritedWidgetPage()
       },
     );
   }
@@ -360,6 +362,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, 'WillPopScope_Page');
                 },
                 child: const Text('WillPopScope'),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'InheritedWidget_Page');
+                },
+                child: const Text('InheritedWidget'),
               ),
               ElevatedButton(
                 onPressed: (){
