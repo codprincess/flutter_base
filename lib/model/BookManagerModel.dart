@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_base/ChangeNotifierProxyProviderPage.dart';
 
+import 'BookModel.dart';
+
 class BookManagerModel with ChangeNotifier{
   //依赖bookModel
   final BookModel _bookModel;
   //获取数据说有ID
   List<int>? _bookIds;
   //构造函数
-  BookManagerModel(this._bookModel,{BookManagerModel?bookManagerModel})
+  BookManagerModel(this._bookModel,{BookManagerModel? bookManagerModel})
       : _bookIds = bookManagerModel?._bookIds??[];
 
   //获取所有的书

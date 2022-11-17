@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/model/BookManagerModel.dart';
 import 'package:flutter_base/model/BookModel.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ class PageA extends StatelessWidget {
       appBar: AppBar(title: const Text('书籍列表'),),
       body: ListView.builder(
         itemCount: bookLists.length,
-        itemBuilder: (context,index) => BookItem();
+        itemBuilder: (context,index) => BookItem(id:index+1)
       ),
     );
   }
@@ -45,8 +46,19 @@ class BookButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return Container();
+   final bookManagerModel = Provider.of<BookManagerModel>(context);
+    return GestureDetector(
+      onTap: (bookManagerModel.books!).contains(book)
+          ? ()=>bookManagerModel.removeBook(book)
+          : ()=>bookManagerModel.addBook(book),
+      child: SizedBox(
+        width: 100,
+        height: 60,
+        child: (bookManagerModel.books!).contains(book)
+            ? const Icon(Icons.star,color: Colors.red,)
+            : const Icon(Icons.star_border),
+      ),
+    );
   }
 }
 

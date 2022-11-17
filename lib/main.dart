@@ -7,6 +7,8 @@ import 'package:flutter_base/ProxyProviderPage.dart';
 import 'package:flutter_base/model/BookManagerModel.dart';
 import 'package:provider/provider.dart';
 
+import 'model/BookModel.dart';
+
 void main() => runApp( MyApp());
 class MyApp extends StatelessWidget{
   const MyApp({super.key});
