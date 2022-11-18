@@ -9,13 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3d16082-1e09-4512-8f1c-93ccbafd59a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/BookManagerModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/BookManagerModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/PageA.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/PageA.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/PageB.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/PageB.dart" afterDir="false" />
-    </list>
+    <list default="true" id="e3d16082-1e09-4512-8f1c-93ccbafd59a2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,18 +57,18 @@
       <recent name="$PROJECT_DIR$/lib/model" />
     </key>
   </component>
-  <component name="RunManager" selected="Flutter.main.dart (1)">
-    <configuration name="main.dart (1)" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+  <component name="RunManager" selected="Flutter.main.dart">
+    <configuration name="main3.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main3.dart" />
       <method v="2" />
     </configuration>
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
-      <option name="filePath" value="$PROJECT_DIR$/lib/main2.dart" />
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Flutter.main.dart (1)" />
+        <item itemvalue="Flutter.main3.dart" />
       </list>
     </recent_temporary>
   </component>
