@@ -31,7 +31,11 @@ import 'package:flutter_base/TextPage.dart';
 import 'package:flutter_base/SliverOpacityPage.dart';
 import 'package:flutter_base/ThemePage.dart';
 import 'package:flutter_base/WillPopScopePage.dart';
+import 'package:flutter_base/model/DarkModeProvider.dart';
+import 'package:flutter_base/model/ThemeStore.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'CustomScrollViewPage.dart';
 import 'FlowViewPage.dart';
 import 'InheritedWidgetPage.dart';
@@ -43,91 +47,155 @@ import 'SliverGridPage.dart';
 import 'SliverPrototypeExtentListPage.dart';
 import 'SliverVisibilityPage.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  SharedPreferences.setMockInitialValues({});
+  runApp( MyApp());
+}
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      themeMode: ThemeMode.dark,//改变主题
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.green
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.blueGrey
-      ),
-      initialRoute: '/',//名为"/"的路由作为应用的home(首页)
-      //注册路由
-      routes: {
-        '/':(context)=> MyHomePage(title: '样式实例入口'),//注册首页路由
-        'route_page':(context)=> RoutePage(),
-        'text_page':(context)=>TextPage(),
-        'image_page':(context)=>ImagePage(),
-        'from_page':(context)=>FromPage(),
-        'from_radio':(context)=>FromRadio(),
-        'login_page':(context)=>LoginPage(),
-        'layout_page':(context)=>LayoutPage(),
-        'row_page':(context)=>RowPage(),
-        'padding_page':(context)=>PaddingPage(),
-        'app_page':(context)=>AppPage(),
-        'bottomappbar_page':(context)=>BottomAppBarPage(),
-        'scaffold_page':(context)=>ScaffoldPage(),
-        // 'indicator_page':(context)=>IndicatorPage(),
-        'dialog_page':(context)=>showBottomSheetPage(),
-        'border_page':(context)=>BorderPage(),
+  State<MyApp> createState() => _MyAppState();
+}
 
-        'BoxDecoration_Page':(context)=>BoxDecorationPage(),
-        'sv_page':(context)=>SvPage(),
-        'listview_page':(context)=>ListViewPage(),
-        'test_page':(context)=>TestPage(),
-        'AnimatedList_page':(context)=>AnimatedListPage(),
-        'gridview_page':(context)=>GridViewPage(),
-        'pageview_page':(context)=>PageViewPage(),
-        'CustomScrollView_Page':(context)=>CustomScrollViewPage(),
-        'SliverAnimatedList_page':(context)=>SliverAnimatedListPage(),
-        'SliverGrid_Page':(context)=>SliverGridPage(),
-        'SliverAppBar_Page':(context)=>SliverAppBarPage(),
-        'SliverPersistentHeader_Page':(context)=>SliverPersistentHeaderPage(),
-        'SliverToBoxAdapter_Page':(context)=>SliverToBoxAdapterPage(),
-        'SliverFillViewport_Page':(context)=>SliverFillViewportPage(),
-        'SliverPrototypeExtentList_Page':(context)=>SliverPrototypeExtentListPage(),
-        'SliverPadding_Page':(context)=>SliverPaddingPage(),
-        'SliverOpacity_Page':(context)=>SliverOpacityPage(),
-        'SliverAnimatedOpacity_Page':(context)=>SliverAnimatedOpacityPage(),
-        'SliverVisibility_Page':(context)=>SliverVisibilityPage(),
-        'SliverFadeTransition_Page':(context)=>SliverFadeTransitionPage(),
-        'SliverLayoutBuilder_Page':(context)=>SliverLayoutBuilderPage(),
-        'SliverSafeArea_Page':(context)=>SliverSafeAreaPage(),
-        'FlowView_Page':(context)=>FlowViewPage(),
-        'NestedScrollView_Page':(context)=>NestedScrollViewPage(),
-        'WillPopScope_Page':(context)=>WillPopScopePage(),
-        'InheritedWidget_Page':(context)=>InheritedWidgetPage(),
-        'Provider_Page':(context)=>ProviderPage(),
-        'theme_page':(context)=>ThemePage()
-      },
+class _MyAppState extends State<MyApp> {
+  ThemeMode themeMode = ThemeMode.light; // 这里默认跟随系统
+  final DarkModeProvider _darkModeProvider = DarkModeProvider();
+  @override
+  void initState() {
+    // TODO: implement initState
+    // 初始化ThemeStore，之后赋值到themeProvider中
+    ThemeStore.init().then((e)=>_darkModeProvider.setThemeMode(ThemeStore.getThemeModel()));
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context)=>_darkModeProvider)
+      ],
+      child: Consumer<DarkModeProvider>(
+        builder: (context,darkModeProvider,child){
+          return MaterialApp(
+            title: 'Flutter Demo',
+            themeMode: themeMode,
+            theme: ThemeData(colorScheme: const ColorScheme.light()), // 亮色主题
+            darkTheme: ThemeData(colorScheme: const ColorScheme.dark()), // 暗色主题
+
+            initialRoute: '/',//名为"/"的路由作为应用的home(首页)
+            //注册路由
+            routes: {
+              '/':(context)=> MyHomePage(title: '样式实例入口'),//注册首页路由
+              'route_page':(context)=> RoutePage(),
+              'text_page':(context)=>TextPage(),
+              'image_page':(context)=>ImagePage(),
+              'from_page':(context)=>FromPage(),
+              'from_radio':(context)=>FromRadio(),
+              'login_page':(context)=>LoginPage(),
+              'layout_page':(context)=>LayoutPage(),
+              'row_page':(context)=>RowPage(),
+              'padding_page':(context)=>PaddingPage(),
+              'app_page':(context)=>AppPage(),
+              'bottomappbar_page':(context)=>BottomAppBarPage(),
+              'scaffold_page':(context)=>ScaffoldPage(),
+              // 'indicator_page':(context)=>IndicatorPage(),
+              'dialog_page':(context)=>showBottomSheetPage(),
+              'border_page':(context)=>BorderPage(),
+
+              'BoxDecoration_Page':(context)=>BoxDecorationPage(),
+              'sv_page':(context)=>SvPage(),
+              'listview_page':(context)=>ListViewPage(),
+              'test_page':(context)=>TestPage(),
+              'AnimatedList_page':(context)=>AnimatedListPage(),
+              'gridview_page':(context)=>GridViewPage(),
+              'pageview_page':(context)=>PageViewPage(),
+              'CustomScrollView_Page':(context)=>CustomScrollViewPage(),
+              'SliverAnimatedList_page':(context)=>SliverAnimatedListPage(),
+              'SliverGrid_Page':(context)=>SliverGridPage(),
+              'SliverAppBar_Page':(context)=>SliverAppBarPage(),
+              'SliverPersistentHeader_Page':(context)=>SliverPersistentHeaderPage(),
+              'SliverToBoxAdapter_Page':(context)=>SliverToBoxAdapterPage(),
+              'SliverFillViewport_Page':(context)=>SliverFillViewportPage(),
+              'SliverPrototypeExtentList_Page':(context)=>SliverPrototypeExtentListPage(),
+              'SliverPadding_Page':(context)=>SliverPaddingPage(),
+              'SliverOpacity_Page':(context)=>SliverOpacityPage(),
+              'SliverAnimatedOpacity_Page':(context)=>SliverAnimatedOpacityPage(),
+              'SliverVisibility_Page':(context)=>SliverVisibilityPage(),
+              'SliverFadeTransition_Page':(context)=>SliverFadeTransitionPage(),
+              'SliverLayoutBuilder_Page':(context)=>SliverLayoutBuilderPage(),
+              'SliverSafeArea_Page':(context)=>SliverSafeAreaPage(),
+              'FlowView_Page':(context)=>FlowViewPage(),
+              'NestedScrollView_Page':(context)=>NestedScrollViewPage(),
+              'WillPopScope_Page':(context)=>WillPopScopePage(),
+              'InheritedWidget_Page':(context)=>InheritedWidgetPage(),
+              'Provider_Page':(context)=>ProviderPage(),
+              'theme_page':(context)=>ThemePage()
+            },
+          );
+        },
+      ),
     );
+
   }
 }
 
 
+
+
+
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title,}) : super(key: key);
   final String title;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  ThemeMode themeMode = ThemeMode.system; // 这里默认跟随系统
+  final DarkModeProvider _darkModeProvider = DarkModeProvider();
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).colorScheme.brightness == Brightness.dark;
+    print(isDarkMode);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            onPressed: () async{
+              if(_darkModeProvider.themeMode == ThemeMode.system){
+                bool isCancel = true;
+                await showDialog(
+                  context: context,
+                  builder: (context){
+                    return AlertDialog(
+                      title: const Text('提示'),
+                      content: const Text("切换模式将会关闭自动跟随系统，可以在主题设置里再次开启"),
+                      actions: [
+                        TextButton(child: const Text("取消"), onPressed: () => Navigator.pop(context)),
+                        TextButton(
+                          child: const Text("切换"),
+                          onPressed: () {
+                            isCancel = false; // 标记为不取消
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    );
+                  }
+                );
+                if (isCancel) return;
+              }
+              //切换主题
+              _darkModeProvider.setThemeMode(isDarkMode ? ThemeMode.light : ThemeMode.dark);
+            },
+            icon: Icon(isDarkMode ? Icons.light_mode : Icons.mode_night),
+            tooltip: "切换为${isDarkMode ? '亮色' : '暗黑'}模式",
+          )
+        ],
       ),
       body: SingleChildScrollView(
         physics: PageScrollPhysics(),
