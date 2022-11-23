@@ -31,7 +31,9 @@ import 'package:flutter_base/TextPage.dart';
 import 'package:flutter_base/SliverOpacityPage.dart';
 import 'package:flutter_base/ThemePage.dart';
 import 'package:flutter_base/WillPopScopePage.dart';
+import 'package:flutter_base/dark_theme_styles.dart';
 import 'package:flutter_base/model/DarkModeProvider.dart';
+import 'package:flutter_base/model/DarkThemeProvider.dart';
 import 'package:flutter_base/model/ThemeStore.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
 import 'package:provider/provider.dart';
@@ -60,30 +62,31 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeMode themeMode = ThemeMode.light; // 这里默认跟随系统
-  final DarkModeProvider _darkModeProvider = DarkModeProvider();
+  DarkThemeProvider themeChangeProvider = DarkThemeProvider();
   @override
   void initState() {
     // TODO: implement initState
     // 初始化ThemeStore，之后赋值到themeProvider中
-    ThemeStore.init().then((e)=>_darkModeProvider.setThemeMode(ThemeStore.getThemeModel()));
+    getCurrentAppTheme();
     super.initState();
+  }
+  void getCurrentAppTheme() async{
+    themeChangeProvider.darkTheme = await themeChangeProvider.darkThemePreference.getTheme();
   }
   @override
   Widget build(BuildContext context) {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=>_darkModeProvider)
+        ChangeNotifierProvider(create: (context)=>themeChangeProvider)
       ],
-      child: Consumer<DarkModeProvider>(
+      child: Consumer<DarkThemeProvider>(
         builder: (context,darkModeProvider,child){
           return MaterialApp(
             title: 'Flutter Demo',
-            themeMode: themeMode,
-            theme: ThemeData(colorScheme: const ColorScheme.light()), // 亮色主题
-            darkTheme: ThemeData(colorScheme: const ColorScheme.dark()), // 暗色主题
-
+            // theme: ThemeData(colorScheme: const ColorScheme.light()), // 亮色主题
+            // darkTheme: ThemeData(colorScheme: const ColorScheme.dark()), // 暗色主题
+            theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             initialRoute: '/',//名为"/"的路由作为应用的home(首页)
             //注册路由
             routes: {
@@ -153,337 +156,335 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  ThemeMode themeMode = ThemeMode.system; // 这里默认跟随系统
-  final DarkModeProvider _darkModeProvider = DarkModeProvider();
+
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).colorScheme.brightness == Brightness.dark;
-    print(isDarkMode);
-
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+    final themeProvider = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        actions: [
-          IconButton(
-            onPressed: () async{
-              if(_darkModeProvider.themeMode == ThemeMode.system){
-                bool isCancel = true;
-                await showDialog(
-                  context: context,
-                  builder: (context){
-                    return AlertDialog(
-                      title: const Text('提示'),
-                      content: const Text("切换模式将会关闭自动跟随系统，可以在主题设置里再次开启"),
-                      actions: [
-                        TextButton(child: const Text("取消"), onPressed: () => Navigator.pop(context)),
-                        TextButton(
-                          child: const Text("切换"),
-                          onPressed: () {
-                            isCancel = false; // 标记为不取消
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    );
-                  }
-                );
-                if (isCancel) return;
-              }
-              //切换主题
-              _darkModeProvider.setThemeMode(isDarkMode ? ThemeMode.light : ThemeMode.dark);
-            },
-            icon: Icon(isDarkMode ? Icons.light_mode : Icons.mode_night),
-            tooltip: "切换为${isDarkMode ? '亮色' : '暗黑'}模式",
-          )
-        ],
+      backgroundColor: Theme.of(context).primaryColor,
+      appBar: AppBar(title:
+      Text(widget.title),
       ),
-      body: SingleChildScrollView(
-        physics: PageScrollPhysics(),
-        child: Container(
-          padding: const EdgeInsets.all(20.0),
-          child: Wrap(
-            spacing: 8.0,//主轴(水平)方向间距
-            runSpacing: 4.0,//纵轴方向间距
-            alignment: WrapAlignment.start,//沿主轴
-            children:  <Widget>[
-              ElevatedButton(
-                  onPressed: (){
-                    Navigator.pushNamed(context, 'text_page');
-                  },
-                  child: const Text('文本及样式'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'image_page');
-                },
-                child: const Text('图片加载'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'from_page');
-                },
-                child: const Text('表单'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'from_radio');
-                },
-                child: const Text('表单之radio实例'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'login_page');
-                },
-                child: const Text('登录表单实例'),
-              ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'layout_page');
-                },
-                child: const Text('布局约束'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'theme_page');
-                },
-                child: const Text('Theme 主题'),
-              ),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            physics: const PageScrollPhysics(),
+            child: Container(
+              padding: const EdgeInsets.only(left:20.0,right: 0),
+              child: Wrap(
+                spacing: 8.0,//主轴(水平)方向间距
+                runSpacing: 4.0,//纵轴方向间距
+                alignment: WrapAlignment.start,//沿主轴
+                children:  <Widget>[
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'text_page');
+                    },
+                    child: const Text('文本及样式'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'image_page');
+                    },
+                    child: const Text('图片加载'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'from_page');
+                    },
+                    child: const Text('表单'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'from_radio');
+                    },
+                    child: const Text('表单之radio实例'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'login_page');
+                    },
+                    child: const Text('登录表单实例'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'row_page');
-                },
-                child: const Text('布局方式Row Column'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'layout_page');
+                    },
+                    child: const Text('布局约束'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'theme_page');
+                    },
+                    child: const Text('Theme 主题'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'padding_page');
-                },
-                child: const Text('容器类组件'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'app_page');
-                },
-                child: const Text('导航栏'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'bottomappbar_page');
-                },
-                child: const Text('BottomAppBar'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'scaffold_page');
-                },
-                child: const Text('Scaffold'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'row_page');
+                    },
+                    child: const Text('布局方式Row Column'),
+                  ),
 
-              // ElevatedButton(
-              //   onPressed: (){
-              //     Navigator.pushNamed(context, 'indicator_page');
-              //   },
-              //   child: const Text('进度器'),
-              // ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'padding_page');
+                    },
+                    child: const Text('容器类组件'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'app_page');
+                    },
+                    child: const Text('导航栏'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'bottomappbar_page');
+                    },
+                    child: const Text('BottomAppBar'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'scaffold_page');
+                    },
+                    child: const Text('Scaffold'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'dialog_page');
-                },
-                child: const Text('弹出框'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'border_page');
-                },
-                child: const Text('border'),
-              ),
+                  // ElevatedButton(
+                  //   onPressed: (){
+                  //     Navigator.pushNamed(context, 'indicator_page');
+                  //   },
+                  //   child: const Text('进度器'),
+                  // ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'BoxDecoration_Page');
-                },
-                child: const Text('BoxDecoration'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'dialog_page');
+                    },
+                    child: const Text('弹出框'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'border_page');
+                    },
+                    child: const Text('border'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'sv_page');
-                },
-                child: const Text('SingleChildScrollView'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'listview_page');
-                },
-                child: const Text('ListView'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'AnimatedList_page');
-                },
-                child: const Text('动画列表'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'gridview_page');
-                },
-                child: const Text('GridView网格组件'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'pageview_page');
-                },
-                child: const Text('PageView'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'CustomScrollView_Page');
-                },
-                child: const Text('CustomScrollViewPage'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'BoxDecoration_Page');
+                    },
+                    child: const Text('BoxDecoration'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverAnimatedList_page');
-                },
-                child: const Text(' SliverAnimatedList'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'sv_page');
+                    },
+                    child: const Text('SingleChildScrollView'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'listview_page');
+                    },
+                    child: const Text('ListView'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AnimatedList_page');
+                    },
+                    child: const Text('动画列表'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'gridview_page');
+                    },
+                    child: const Text('GridView网格组件'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'pageview_page');
+                    },
+                    child: const Text('PageView'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'CustomScrollView_Page');
+                    },
+                    child: const Text('CustomScrollViewPage'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverGrid_Page');
-                },
-                child: const Text(' SliverGrid'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverAnimatedList_page');
+                    },
+                    child: const Text(' SliverAnimatedList'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverAppBar_Page');
-                },
-                child: const Text('SliverAppBar'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverPersistentHeader_Page');
-                },
-                child: const Text('SliverPersistentHeader'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverToBoxAdapter_Page');
-                },
-                child: const Text('SliverToBoxAdapter'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverFillViewport_Page');
-                },
-                child: const Text('SliverFillViewport'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverGrid_Page');
+                    },
+                    child: const Text(' SliverGrid'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverPrototypeExtentList_Page');
-                },
-                child: const Text('SliverPrototypeExtentList'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverPadding_Page');
-                },
-                child: const Text('SliverPadding'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverOpacity_Page');
-                },
-                child: const Text('SliverOpacity'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverAppBar_Page');
+                    },
+                    child: const Text('SliverAppBar'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverPersistentHeader_Page');
+                    },
+                    child: const Text('SliverPersistentHeader'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverToBoxAdapter_Page');
+                    },
+                    child: const Text('SliverToBoxAdapter'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverFillViewport_Page');
+                    },
+                    child: const Text('SliverFillViewport'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverAnimatedOpacity_Page');
-                },
-                child: const Text('SliverAnimatedOpacity'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverPrototypeExtentList_Page');
+                    },
+                    child: const Text('SliverPrototypeExtentList'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverPadding_Page');
+                    },
+                    child: const Text('SliverPadding'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverOpacity_Page');
+                    },
+                    child: const Text('SliverOpacity'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverVisibility_Page');
-                },
-                child: const Text('SliverVisibility'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverFadeTransition_Page');
-                },
-                child: const Text('SliverFadeTransition'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverLayoutBuilder_Page');
-                },
-                child: const Text('SliverLayoutBuilder'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'SliverSafeArea_Page');
-                },
-                child: const Text('SliverSafeArea'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'NestedScrollView_Page');
-                },
-                child: const Text('NestedScrollView'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverAnimatedOpacity_Page');
+                    },
+                    child: const Text('SliverAnimatedOpacity'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'WillPopScope_Page');
-                },
-                child: const Text('WillPopScope'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'InheritedWidget_Page');
-                },
-                child: const Text('InheritedWidget'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'Provider');
-                },
-                child: const Text('Provider'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverVisibility_Page');
+                    },
+                    child: const Text('SliverVisibility'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverFadeTransition_Page');
+                    },
+                    child: const Text('SliverFadeTransition'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverLayoutBuilder_Page');
+                    },
+                    child: const Text('SliverLayoutBuilder'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SliverSafeArea_Page');
+                    },
+                    child: const Text('SliverSafeArea'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'NestedScrollView_Page');
+                    },
+                    child: const Text('NestedScrollView'),
+                  ),
 
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'FlowView_Page');
-                },
-                child: const Text('瀑布流插件'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'test_page');
-                },
-                child: const Text('测试页面214535634'),
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'test_page');
-                },
-                child: const Text('测试页面'),
-              ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'WillPopScope_Page');
+                    },
+                    child: const Text('WillPopScope'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'InheritedWidget_Page');
+                    },
+                    child: const Text('InheritedWidget'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Provider');
+                    },
+                    child: const Text('Provider'),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'FlowView_Page');
+                    },
+                    child: const Text('瀑布流插件'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'test_page');
+                    },
+                    child: const Text('测试页面214535634'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'test_page');
+                    },
+                    child: const Text('测试页面'),
+                  ),
 
 
-            ],
+                ],
+              ),
+            ),
           ),
-        ),
+          Positioned(
+              right:0,
+              top: 0,
+              child: GestureDetector(
+                onTap: (){
+                  themeProvider.darkTheme = !themeProvider.darkTheme;
+                },
+                child: Container(
+                  height:150,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(30),
+                        bottomRight: Radius.circular(30)
+                    ),
+                    shape: BoxShape.rectangle,
+                    color: Theme.of(context).hoverColor,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12,right: 12,bottom: 28),
+                    child:themeProvider.darkTheme
+                        ? Image.asset('images/bulb_off.png',fit: BoxFit.fitHeight,)
+                        : Image.asset('images/bulb_on.png',fit: BoxFit.fitHeight,)
+                  ),
+                ),
+              )
+          ),
+        ],
       ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _incrementCounter,
