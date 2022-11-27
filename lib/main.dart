@@ -42,6 +42,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'CustomScrollViewPage.dart';
 import 'FlowViewPage.dart';
 import 'InheritedWidgetPage.dart';
+import 'PositionedPage.dart';
 import 'ProviderPage.dart';
 import 'RoutePage.dart';
 import 'SliverAppBarPage.dart';
@@ -108,6 +109,7 @@ class _MyAppState extends State<MyApp> {
               'dialog_page':(context)=>showBottomSheetPage(),
               'border_page':(context)=>BorderPage(),
               'stack_page':(context)=>StackPage(),
+              'Positioned_Page':(context)=>PositionedPage(),
               'BoxDecoration_Page':(context)=>BoxDecorationPage(),
               'sv_page':(context)=>SvPage(),
               'listview_page':(context)=>ListViewPage(),
@@ -286,6 +288,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'stack_page');
                     },
                     child: const Text('Stack'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Positioned_Page');
+                    },
+                    child: const Text('Positioned'),
                   ),
 
                   ElevatedButton(
