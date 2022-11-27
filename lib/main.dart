@@ -35,6 +35,7 @@ import 'package:flutter_base/dark_theme_styles.dart';
 import 'package:flutter_base/model/DarkModeProvider.dart';
 import 'package:flutter_base/model/DarkThemeProvider.dart';
 import 'package:flutter_base/model/ThemeStore.dart';
+import 'package:flutter_base/pages/StackPage.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -106,7 +107,7 @@ class _MyAppState extends State<MyApp> {
               // 'indicator_page':(context)=>IndicatorPage(),
               'dialog_page':(context)=>showBottomSheetPage(),
               'border_page':(context)=>BorderPage(),
-
+              'stack_page':(context)=>StackPage(),
               'BoxDecoration_Page':(context)=>BoxDecorationPage(),
               'sv_page':(context)=>SvPage(),
               'listview_page':(context)=>ListViewPage(),
@@ -279,6 +280,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'BoxDecoration_Page');
                     },
                     child: const Text('BoxDecoration'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'stack_page');
+                    },
+                    child: const Text('Stack'),
                   ),
 
                   ElevatedButton(
