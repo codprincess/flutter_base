@@ -41,6 +41,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'CustomScrollViewPage.dart';
 import 'FlowViewPage.dart';
+import 'FutureBuilderPage.dart';
 import 'InheritedWidgetPage.dart';
 import 'PositionedPage.dart';
 import 'ProviderPage.dart';
@@ -137,7 +138,8 @@ class _MyAppState extends State<MyApp> {
               'WillPopScope_Page':(context)=>WillPopScopePage(),
               'InheritedWidget_Page':(context)=>InheritedWidgetPage(),
               'Provider_Page':(context)=>ProviderPage(),
-              'theme_page':(context)=>ThemePage()
+              'theme_page':(context)=>ThemePage(),
+              'FutureBuilder_Page':(context)=>FutureBuilderPage()
             },
           );
         },
@@ -447,6 +449,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('Provider'),
                   ),
+                  //数据加载
+
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'FutureBuilder_Page');
+                    },
+                    child: const Text('FutureBuilder'),
+                  ),
+
 
                   ElevatedButton(
                     onPressed: (){
