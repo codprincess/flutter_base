@@ -43,6 +43,7 @@ import 'CustomScrollViewPage.dart';
 import 'FlowViewPage.dart';
 import 'FutureBuilderPage.dart';
 import 'InheritedWidgetPage.dart';
+import 'OffstagePage.dart';
 import 'PositionedPage.dart';
 import 'ProviderPage.dart';
 import 'RoutePage.dart';
@@ -144,6 +145,7 @@ class _MyAppState extends State<MyApp> {
               'FutureBuilder_Page':(context)=>FutureBuilderPage(),
               'StreamBuilder_Page':(context)=>StreamBuilderPage(),
               'Visibility_Page':(context)=>VisibilityPage(),
+              'Offstage_Page':(context)=>OffstagePage()
             },
           );
         },
@@ -275,6 +277,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'Visibility_Page');
                     },
                     child: const Text('Visibility'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Offstage_Page');
+                    },
+                    child: const Text('Offstage'),
                   ),
 
                   ElevatedButton(
