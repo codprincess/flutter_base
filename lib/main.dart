@@ -51,6 +51,7 @@ import 'SliverFillViewportPage.dart';
 import 'SliverGridPage.dart';
 import 'SliverPrototypeExtentListPage.dart';
 import 'SliverVisibilityPage.dart';
+import 'StreamBuilderPage.dart';
 
 void main() {
   SharedPreferences.setMockInitialValues({});
@@ -139,7 +140,8 @@ class _MyAppState extends State<MyApp> {
               'InheritedWidget_Page':(context)=>InheritedWidgetPage(),
               'Provider_Page':(context)=>ProviderPage(),
               'theme_page':(context)=>ThemePage(),
-              'FutureBuilder_Page':(context)=>FutureBuilderPage()
+              'FutureBuilder_Page':(context)=>FutureBuilderPage(),
+              'StreamBuilder_Page':(context)=>StreamBuilderPage()
             },
           );
         },
@@ -458,6 +460,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const Text('FutureBuilder'),
                   ),
 
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'StreamBuilder_Page');
+                    },
+                    child: const Text('StreamBuilder'),
+                  ),
 
                   ElevatedButton(
                     onPressed: (){
