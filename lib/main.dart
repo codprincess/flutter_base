@@ -52,6 +52,7 @@ import 'SliverGridPage.dart';
 import 'SliverPrototypeExtentListPage.dart';
 import 'SliverVisibilityPage.dart';
 import 'StreamBuilderPage.dart';
+import 'VisibilityPage.dart';
 
 void main() {
   SharedPreferences.setMockInitialValues({});
@@ -141,7 +142,8 @@ class _MyAppState extends State<MyApp> {
               'Provider_Page':(context)=>ProviderPage(),
               'theme_page':(context)=>ThemePage(),
               'FutureBuilder_Page':(context)=>FutureBuilderPage(),
-              'StreamBuilder_Page':(context)=>StreamBuilderPage()
+              'StreamBuilder_Page':(context)=>StreamBuilderPage(),
+              'Visibility_Page':(context)=>VisibilityPage(),
             },
           );
         },
@@ -267,6 +269,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   //   },
                   //   child: const Text('进度器'),
                   // ),
+
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Visibility_Page');
+                    },
+                    child: const Text('Visibility'),
+                  ),
 
                   ElevatedButton(
                     onPressed: (){
