@@ -16,9 +16,10 @@ class _DatePickerPage2State extends State<DatePickerPage2> {
       firstDate: DateTime(2021),
       lastDate: DateTime(2030),
       initialEntryMode: DatePickerEntryMode.calendarOnly,
-      helpText: '选择日期',
-      cancelText: '取消',
-      confirmText: '确定',
+      // helpText: '选择日期',
+      // cancelText: '取消',
+      // confirmText: '确定',
+      locale:const Locale('zh'),
       initialDatePickerMode: DatePickerMode.day,
       builder: (context, Widget? child){
         return Theme(
@@ -52,7 +53,6 @@ class _DatePickerPage2State extends State<DatePickerPage2> {
         helpText: '选择日期',
         cancelText: '取消',
         confirmText: '确定',
-
         builder: (context, Widget? child){
           return Theme(
             data: ThemeData(

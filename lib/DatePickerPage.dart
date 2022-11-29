@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 class DatePickerPage extends StatefulWidget {
   const DatePickerPage({Key? key}) : super(key: key);
 
@@ -22,20 +22,28 @@ class _DatePickerPageState extends State<DatePickerPage> {
           children: [
             SizedBox(
               height: 400,
-              child: CupertinoDatePicker(
-                mode: CupertinoDatePickerMode.dateAndTime,
-                use24hFormat: true,
-                dateOrder: DatePickerDateOrder.dmy,
-                minimumDate: DateTime(2021, 10, 10),
-                maximumDate: DateTime(2023, 12, 22),
-                minimumYear: 2020,
-                maximumYear: 2025,
-                initialDateTime: DateTime.now(),
-                onDateTimeChanged: (val){
-                  setState(() {
-                    _selectDateTime = val;
-                  });
-                },
+              child: Localizations(
+                locale: const Locale('zh'),
+                delegates:const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                child: CupertinoDatePicker(
+                  mode: CupertinoDatePickerMode.dateAndTime,
+                  use24hFormat: true,
+                  dateOrder: DatePickerDateOrder.dmy,
+                  minimumDate: DateTime(2021, 10, 10),
+                  maximumDate: DateTime(2023, 12, 22),
+                  minimumYear: 2020,
+                  maximumYear: 2025,
+                  initialDateTime: DateTime.now(),
+                  onDateTimeChanged: (val){
+                    setState(() {
+                      _selectDateTime = val;
+                    });
+                  },
+                ),
               ),
             ),
             TextButton(
@@ -61,18 +69,26 @@ class _DatePickerPageState extends State<DatePickerPage> {
           children: [
             SizedBox(
               height: 400,
-              child: CupertinoTimerPicker(
-                mode: CupertinoTimerPickerMode.hms,
-                initialTimerDuration: Duration(hours: now.hour,minutes: now.minute,seconds: now.second),
-                minuteInterval: 1,
-                secondInterval: 1,
-                alignment: Alignment.center,
-                backgroundColor: Colors.white,
-                onTimerDurationChanged: (Duration duration){
-                  _selectTime = duration;
-                  // print(duration);
-                  print(_selectTime);
-               },
+              child: Localizations(
+                locale:const Locale('zh'),
+                delegates:const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                child: CupertinoTimerPicker(
+                  mode: CupertinoTimerPickerMode.hms,
+                  initialTimerDuration: Duration(hours: now.hour,minutes: now.minute,seconds: now.second),
+                  minuteInterval: 1,
+                  secondInterval: 1,
+                  alignment: Alignment.center,
+                  backgroundColor: Colors.white,
+                  onTimerDurationChanged: (Duration duration){
+                    _selectTime = duration;
+                    // print(duration);
+                    print(_selectTime);
+                 },
+                ),
               ),
             ),
             CupertinoButton(
@@ -97,16 +113,16 @@ class _DatePickerPageState extends State<DatePickerPage> {
         child: Center(
           child: Column(
             children: [
-              // Container(
-              //   padding:const EdgeInsets.all(30),
-              //   child: Text(_selectDateTime != null?_selectDateTime.toString():'未选择时间'),
-              // ),
-              // ElevatedButton(
-              //   onPressed: (){
-              //     _showDatePicker(context);
-              //   },
-              //   child: const Text('CupertinoDatePicker')
-              // ),
+              Container(
+                padding:const EdgeInsets.all(30),
+                child: Text(_selectDateTime != null?_selectDateTime.toString():'未选择时间'),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  _showDatePicker(context);
+                },
+                child: const Text('CupertinoDatePicker')
+              ),
               Container(
                 padding:const EdgeInsets.all(30),
                 child: Text(_selectTime != null ? _selectTime.toString():'未选择时间'),

@@ -4,6 +4,7 @@ import 'package:flutter_base/AppPage.dart';
 import 'package:flutter_base/BorderPage.dart';
 import 'package:flutter_base/BottomAppBarPage.dart';
 import 'package:flutter_base/BoxDecorationPage.dart';
+import 'package:flutter_base/DatePickerPage3.dart';
 import 'package:flutter_base/FromPage.dart';
 import 'package:flutter_base/FromRadio.dart';
 import 'package:flutter_base/GridViewPage.dart';
@@ -56,7 +57,8 @@ import 'SliverPrototypeExtentListPage.dart';
 import 'SliverVisibilityPage.dart';
 import 'StreamBuilderPage.dart';
 import 'VisibilityPage.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'dart:convert';
 void main() {
   SharedPreferences.setMockInitialValues({});
   runApp( MyApp());
@@ -91,10 +93,20 @@ class _MyAppState extends State<MyApp> {
       child: Consumer<DarkThemeProvider>(
         builder: (context,darkModeProvider,child){
           return MaterialApp(
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('zh','CH'),
+              Locale('en','US')
+            ],
             title: 'Flutter Demo',
             // theme: ThemeData(colorScheme: const ColorScheme.light()), // 亮色主题
             // darkTheme: ThemeData(colorScheme: const ColorScheme.dark()), // 暗色主题
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
+
             initialRoute: '/',//名为"/"的路由作为应用的home(首页)
             //注册路由
             routes: {
@@ -150,6 +162,7 @@ class _MyAppState extends State<MyApp> {
               'Offstage_Page':(context)=>OffstagePage(),
               'DatePicker_Page':(context)=>DatePickerPage(),
               'DatePicker_Page2':(context)=>DatePickerPage2(),
+              'DatePicker_Page3':(context)=>DatePickerPage3(),
             },
           );
         },
@@ -158,9 +171,6 @@ class _MyAppState extends State<MyApp> {
 
   }
 }
-
-
-
 
 
 class MyHomePage extends StatefulWidget {
@@ -300,6 +310,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('日期选择器Material风格'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'DatePicker_Page3');
+                    },
+                    child: const Text('showDateRangePicker'),
+                  ),
+
                   ElevatedButton(
                     onPressed: (){
                       Navigator.pushNamed(context, 'dialog_page');
