@@ -41,6 +41,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'CustomScrollViewPage.dart';
 import 'DatePickerPage.dart';
+import 'DatePickerPage2.dart';
 import 'FlowViewPage.dart';
 import 'FutureBuilderPage.dart';
 import 'InheritedWidgetPage.dart';
@@ -148,6 +149,7 @@ class _MyAppState extends State<MyApp> {
               'Visibility_Page':(context)=>VisibilityPage(),
               'Offstage_Page':(context)=>OffstagePage(),
               'DatePicker_Page':(context)=>DatePickerPage(),
+              'DatePicker_Page2':(context)=>DatePickerPage2(),
             },
           );
         },
@@ -290,7 +292,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: (){
                       Navigator.pushNamed(context, 'DatePicker_Page');
                     },
-                    child: const Text('日历'),
+                    child: const Text('日期选择器ios风格'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'DatePicker_Page2');
+                    },
+                    child: const Text('日期选择器Material风格'),
                   ),
                   ElevatedButton(
                     onPressed: (){
