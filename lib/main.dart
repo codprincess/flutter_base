@@ -40,6 +40,7 @@ import 'package:flutter_base/showBottomSheetPage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'CustomScrollViewPage.dart';
+import 'DatePickerPage.dart';
 import 'FlowViewPage.dart';
 import 'FutureBuilderPage.dart';
 import 'InheritedWidgetPage.dart';
@@ -145,7 +146,8 @@ class _MyAppState extends State<MyApp> {
               'FutureBuilder_Page':(context)=>FutureBuilderPage(),
               'StreamBuilder_Page':(context)=>StreamBuilderPage(),
               'Visibility_Page':(context)=>VisibilityPage(),
-              'Offstage_Page':(context)=>OffstagePage()
+              'Offstage_Page':(context)=>OffstagePage(),
+              'DatePicker_Page':(context)=>DatePickerPage(),
             },
           );
         },
@@ -284,7 +286,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('Offstage'),
                   ),
-
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'DatePicker_Page');
+                    },
+                    child: const Text('日历'),
+                  ),
                   ElevatedButton(
                     onPressed: (){
                       Navigator.pushNamed(context, 'dialog_page');
