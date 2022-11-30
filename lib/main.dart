@@ -42,6 +42,7 @@ import 'package:flutter_base/pages/StackPage.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'AnimationPage.dart';
 import 'CustomScrollViewPage.dart';
 import 'DatePickerPage.dart';
 import 'DatePickerPage2.dart';
@@ -168,7 +169,8 @@ class _MyAppState extends State<MyApp> {
               'DatePicker_Page3':(context)=>DatePickerPage3(),
               'Listener_page':(context)=>ListenerPage(),
               'GestureDetector_page':(context)=>GestureDetectorPage(),
-              'GestureRecognizer_Page':(context)=>GestureRecognizerPage()
+              'GestureRecognizer_Page':(context)=>GestureRecognizerPage(),
+              'Animation_Page':(context)=>AnimationPage()
             },
           );
         },
@@ -539,6 +541,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('GestureRecognizer'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Animation_Page');
+                    },
+                    child: const Text('Animation'),
+                  ),
+
 
 
                   ElevatedButton(
