@@ -7,6 +7,7 @@ import 'package:flutter_base/BoxDecorationPage.dart';
 import 'package:flutter_base/DatePickerPage3.dart';
 import 'package:flutter_base/FromPage.dart';
 import 'package:flutter_base/FromRadio.dart';
+import 'package:flutter_base/GestureDetectorPage.dart';
 import 'package:flutter_base/GridViewPage.dart';
 import 'package:flutter_base/ImagePage.dart';
 import 'package:flutter_base/IndicatorPage.dart';
@@ -165,6 +166,7 @@ class _MyAppState extends State<MyApp> {
               'DatePicker_Page2':(context)=>DatePickerPage2(),
               'DatePicker_Page3':(context)=>DatePickerPage3(),
               'Listener_page':(context)=>ListenerPage(),
+              'GestureDetector_page':(context)=>GestureDetectorPage()
             },
           );
         },
@@ -523,6 +525,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('Listener'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'GestureDetector_page');
+                    },
+                    child: const Text('GestureDetector'),
+                  ),
+
                   ElevatedButton(
                     onPressed: (){
                       Navigator.pushNamed(context, 'FlowView_Page');
