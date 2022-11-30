@@ -12,6 +12,7 @@ import 'package:flutter_base/ImagePage.dart';
 import 'package:flutter_base/IndicatorPage.dart';
 import 'package:flutter_base/LayoutPage.dart';
 import 'package:flutter_base/ListViewPage.dart';
+import 'package:flutter_base/ListenerPage.dart';
 import 'package:flutter_base/LoginPage.dart';
 import 'package:flutter_base/NestedScrollViewPage.dart';
 import 'package:flutter_base/PaddingPage.dart';
@@ -163,6 +164,7 @@ class _MyAppState extends State<MyApp> {
               'DatePicker_Page':(context)=>DatePickerPage(),
               'DatePicker_Page2':(context)=>DatePickerPage2(),
               'DatePicker_Page3':(context)=>DatePickerPage3(),
+              'Listener_page':(context)=>ListenerPage(),
             },
           );
         },
@@ -515,7 +517,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('StreamBuilder'),
                   ),
-
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Listener_page');
+                    },
+                    child: const Text('Listener'),
+                  ),
                   ElevatedButton(
                     onPressed: (){
                       Navigator.pushNamed(context, 'FlowView_Page');
