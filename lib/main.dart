@@ -47,6 +47,7 @@ import 'DatePickerPage.dart';
 import 'DatePickerPage2.dart';
 import 'FlowViewPage.dart';
 import 'FutureBuilderPage.dart';
+import 'GestureRecognizerPage.dart';
 import 'InheritedWidgetPage.dart';
 import 'OffstagePage.dart';
 import 'PositionedPage.dart';
@@ -166,7 +167,8 @@ class _MyAppState extends State<MyApp> {
               'DatePicker_Page2':(context)=>DatePickerPage2(),
               'DatePicker_Page3':(context)=>DatePickerPage3(),
               'Listener_page':(context)=>ListenerPage(),
-              'GestureDetector_page':(context)=>GestureDetectorPage()
+              'GestureDetector_page':(context)=>GestureDetectorPage(),
+              'GestureRecognizer_Page':(context)=>GestureRecognizerPage()
             },
           );
         },
@@ -531,6 +533,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('GestureDetector'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'GestureRecognizer_Page');
+                    },
+                    child: const Text('GestureRecognizer'),
+                  ),
+
 
                   ElevatedButton(
                     onPressed: (){
