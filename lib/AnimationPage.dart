@@ -14,9 +14,25 @@ class _AnimationPageState extends State<AnimationPage> with SingleTickerProvider
     // TODO: implement initState
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
-        vsync: this,
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+      upperBound: 650,
+      lowerBound: 400,
+
     );
+    _controller.addListener(() {
+      setState(() {
+
+      });
+    });
+    _controller.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -31,7 +47,7 @@ class _AnimationPageState extends State<AnimationPage> with SingleTickerProvider
             width: double.infinity,
           ),
           Transform.translate(
-            offset: const Offset(250,300),
+            offset:  Offset(250,_controller.value),//改变y的偏移量
             child: Image.asset(
               'images/qiu.png',
               fit: BoxFit.contain,
