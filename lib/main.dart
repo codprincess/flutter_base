@@ -4,6 +4,7 @@ import 'package:flutter_base/AppPage.dart';
 import 'package:flutter_base/BorderPage.dart';
 import 'package:flutter_base/BottomAppBarPage.dart';
 import 'package:flutter_base/BoxDecorationPage.dart';
+import 'package:flutter_base/CurvePage.dart';
 import 'package:flutter_base/DatePickerPage3.dart';
 import 'package:flutter_base/FromPage.dart';
 import 'package:flutter_base/FromRadio.dart';
@@ -170,7 +171,8 @@ class _MyAppState extends State<MyApp> {
               'Listener_page':(context)=>ListenerPage(),
               'GestureDetector_page':(context)=>GestureDetectorPage(),
               'GestureRecognizer_Page':(context)=>GestureRecognizerPage(),
-              'Animation_Page':(context)=>AnimationPage()
+              'Animation_Page':(context)=>AnimationPage(),
+              'Curve_page':(context)=>CurvePage()
             },
           );
         },
@@ -548,6 +550,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const Text('Animation'),
                   ),
 
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Curve_page');
+                    },
+                    child: const Text('Curve'),
+                  ),
 
 
                   ElevatedButton(
