@@ -20,6 +20,7 @@ class _AnimationPageState extends State<AnimationPage> with SingleTickerProvider
       lowerBound: 400,
 
     );
+
     _controller.addListener(() {
       setState(() {
 

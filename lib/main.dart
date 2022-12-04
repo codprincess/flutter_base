@@ -44,6 +44,7 @@ import 'package:flutter_base/showBottomSheetPage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'AnimationPage.dart';
+import 'CurvedAnimationPage.dart';
 import 'CustomScrollViewPage.dart';
 import 'DatePickerPage.dart';
 import 'DatePickerPage2.dart';
@@ -172,7 +173,8 @@ class _MyAppState extends State<MyApp> {
               'GestureDetector_page':(context)=>GestureDetectorPage(),
               'GestureRecognizer_Page':(context)=>GestureRecognizerPage(),
               'Animation_Page':(context)=>AnimationPage(),
-              'Curve_page':(context)=>CurvePage()
+              'Curve_page':(context)=>CurvePage(),
+              'CurvedAnimation_Page':(context)=>CurvedAnimationPage()
             },
           );
         },
@@ -549,6 +551,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('Animation'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'CurvedAnimation_Page');
+                    },
+                    child: const Text('CurvedAnimation'),
+                  ),
+
 
                   ElevatedButton(
                     onPressed: (){
