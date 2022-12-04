@@ -34,6 +34,7 @@ import 'package:flutter_base/TestPage.dart';
 import 'package:flutter_base/TextPage.dart';
 import 'package:flutter_base/SliverOpacityPage.dart';
 import 'package:flutter_base/ThemePage.dart';
+import 'package:flutter_base/TweenPage.dart';
 import 'package:flutter_base/WillPopScopePage.dart';
 import 'package:flutter_base/dark_theme_styles.dart';
 import 'package:flutter_base/model/DarkModeProvider.dart';
@@ -174,7 +175,8 @@ class _MyAppState extends State<MyApp> {
               'GestureRecognizer_Page':(context)=>GestureRecognizerPage(),
               'Animation_Page':(context)=>AnimationPage(),
               'Curve_page':(context)=>CurvePage(),
-              'CurvedAnimation_Page':(context)=>CurvedAnimationPage()
+              'CurvedAnimation_Page':(context)=>CurvedAnimationPage(),
+              'Tween_page':(context)=>TweenPage(),
             },
           );
         },
@@ -565,6 +567,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('Curve'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Tween_page');
+                    },
+                    child: const Text('Tween'),
+                  ),
+
 
 
                   ElevatedButton(
