@@ -45,6 +45,7 @@ import 'package:flutter_base/pages/StackPage.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'AnimatedWidgetPage.dart';
 import 'AnimationPage.dart';
 import 'CurvedAnimationPage.dart';
 import 'CustomScrollViewPage.dart';
@@ -178,7 +179,8 @@ class _MyAppState extends State<MyApp> {
               'Curve_page':(context)=>CurvePage(),
               'CurvedAnimation_Page':(context)=>CurvedAnimationPage(),
               'Tween_page':(context)=>TweenPage(),
-              'ScaleAnimation_page':(context)=>ScaleAnimationPage()
+              'ScaleAnimation_page':(context)=>ScaleAnimationPage(),
+              'AnimatedWidget_Page':(context)=>AnimatedWidgetPage()
             },
           );
         },
@@ -579,9 +581,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: (){
                       Navigator.pushNamed(context, 'ScaleAnimation_page');
                     },
-                    child: const Text('图片方法效果'),
+                    child: const Text('图片放大效果'),
                   ),
 
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AnimatedWidget_Page');
+                    },
+                    child: const Text('AnimatedWidget'),
+                  ),
 
 
 
