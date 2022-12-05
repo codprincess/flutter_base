@@ -21,6 +21,7 @@ import 'package:flutter_base/PaddingPage.dart';
 import 'package:flutter_base/PageViewPage.dart';
 import 'package:flutter_base/RowPage.dart';
 import 'package:flutter_base/ScaffoldPage.dart';
+import 'package:flutter_base/ScaleAnimationPage.dart';
 import 'package:flutter_base/SliverAnimatedListPage.dart';
 import 'package:flutter_base/SliverAnimatedOpacityPage.dart';
 import 'package:flutter_base/SliverFadeTransitionPage.dart';
@@ -177,6 +178,7 @@ class _MyAppState extends State<MyApp> {
               'Curve_page':(context)=>CurvePage(),
               'CurvedAnimation_Page':(context)=>CurvedAnimationPage(),
               'Tween_page':(context)=>TweenPage(),
+              'ScaleAnimation_page':(context)=>ScaleAnimationPage()
             },
           );
         },
@@ -573,6 +575,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('Tween'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'ScaleAnimation_page');
+                    },
+                    child: const Text('图片方法效果'),
+                  ),
+
 
 
 
