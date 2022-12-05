@@ -46,6 +46,7 @@ import 'package:flutter_base/pages/StackPage.dart';
 import 'package:flutter_base/showBottomSheetPage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'AlignTransitionPage.dart';
 import 'AnimatedWidgetPage.dart';
 import 'AnimationPage.dart';
 import 'CurvedAnimationPage.dart';
@@ -183,6 +184,7 @@ class _MyAppState extends State<MyApp> {
               'ScaleAnimation_page':(context)=>ScaleAnimationPage(),
               'AnimatedWidget_Page':(context)=>AnimatedWidgetPage(),
               'AnimatedBuilder_Page':(context)=>AnimatedBuilderPage(),
+              'AlignTransition_Page':(context)=>AlignTransitionPage()
             },
           );
         },
@@ -597,6 +599,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'AnimatedBuilder_Page');
                     },
                     child: const Text('AnimatedBuilder'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AlignTransition_Page');
+                    },
+                    child: const Text('AlignTransition'),
                   ),
 
                   ElevatedButton(
