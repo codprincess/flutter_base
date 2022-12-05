@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/AnimatedBuilderPage.dart';
 import 'package:flutter_base/AnimatedListPage.dart';
 import 'package:flutter_base/AppPage.dart';
 import 'package:flutter_base/BorderPage.dart';
@@ -180,7 +181,8 @@ class _MyAppState extends State<MyApp> {
               'CurvedAnimation_Page':(context)=>CurvedAnimationPage(),
               'Tween_page':(context)=>TweenPage(),
               'ScaleAnimation_page':(context)=>ScaleAnimationPage(),
-              'AnimatedWidget_Page':(context)=>AnimatedWidgetPage()
+              'AnimatedWidget_Page':(context)=>AnimatedWidgetPage(),
+              'AnimatedBuilder_Page':(context)=>AnimatedBuilderPage(),
             },
           );
         },
@@ -590,8 +592,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('AnimatedWidget'),
                   ),
-
-
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AnimatedBuilder_Page');
+                    },
+                    child: const Text('AnimatedBuilder'),
+                  ),
 
                   ElevatedButton(
                     onPressed: (){
