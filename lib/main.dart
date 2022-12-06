@@ -5,6 +5,7 @@ import 'package:flutter_base/AnimatedModalBarrierPage.dart';
 import 'package:flutter_base/AppPage.dart';
 import 'package:flutter_base/BorderPage.dart';
 import 'package:flutter_base/BottomAppBarPage.dart';
+import 'package:flutter_base/ModalBarrierPage.dart';
 import 'package:flutter_base/BoxDecorationPage.dart';
 import 'package:flutter_base/CurvePage.dart';
 import 'package:flutter_base/DatePickerPage3.dart';
@@ -139,6 +140,7 @@ class _MyAppState extends State<MyApp> {
               // 'indicator_page':(context)=>IndicatorPage(),
               'dialog_page':(context)=>showBottomSheetPage(),
               'SnackBar_page':(context)=>SnackBarPage(),
+              'ModalBarrier_page':(context)=> ModalBarrierPage(),
               'border_page':(context)=>BorderPage(),
               'stack_page':(context)=>StackPage(),
               'Positioned_Page':(context)=>PositionedPage(),
@@ -349,6 +351,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'dialog_page');
                     },
                     child: const Text('弹出框'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'ModalBarrier_page');
+                    },
+                    child: const Text('ModalBarrier'),
                   ),
                   ElevatedButton(
                     onPressed: (){
