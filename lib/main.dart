@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/AnimatedBuilderPage.dart';
 import 'package:flutter_base/AnimatedListPage.dart';
+import 'package:flutter_base/AnimatedModalBarrierPage.dart';
 import 'package:flutter_base/AppPage.dart';
 import 'package:flutter_base/BorderPage.dart';
 import 'package:flutter_base/BottomAppBarPage.dart';
@@ -31,6 +32,7 @@ import 'package:flutter_base/SliverPaddingPage.dart';
 import 'package:flutter_base/SliverPersistentHeaderPage.dart';
 import 'package:flutter_base/SliverSafeAreaPage.dart';
 import 'package:flutter_base/SliverToBoxAdapterPage.dart';
+import 'package:flutter_base/SnackBarPage.dart';
 import 'package:flutter_base/SvPage.dart';
 import 'package:flutter_base/TestPage.dart';
 import 'package:flutter_base/TextPage.dart';
@@ -136,6 +138,7 @@ class _MyAppState extends State<MyApp> {
               'scaffold_page':(context)=>ScaffoldPage(),
               // 'indicator_page':(context)=>IndicatorPage(),
               'dialog_page':(context)=>showBottomSheetPage(),
+              'SnackBar_page':(context)=>SnackBarPage(),
               'border_page':(context)=>BorderPage(),
               'stack_page':(context)=>StackPage(),
               'Positioned_Page':(context)=>PositionedPage(),
@@ -184,7 +187,9 @@ class _MyAppState extends State<MyApp> {
               'ScaleAnimation_page':(context)=>ScaleAnimationPage(),
               'AnimatedWidget_Page':(context)=>AnimatedWidgetPage(),
               'AnimatedBuilder_Page':(context)=>AnimatedBuilderPage(),
-              'AlignTransition_Page':(context)=>AlignTransitionPage()
+              'AlignTransition_Page':(context)=>AlignTransitionPage(),
+              'AnimatedModalBarrier_Page':(context)=>AnimatedModalBarrierPage(),
+
             },
           );
         },
@@ -345,6 +350,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('弹出框'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SnackBar_page');
+                    },
+                    child: const Text('SnackBar'),
+                  ),
+
                   ElevatedButton(
                     onPressed: (){
                       Navigator.pushNamed(context, 'border_page');
@@ -606,6 +618,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('AlignTransition'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AnimatedModalBarrier_Page');
+                    },
+                    child: const Text('AnimatedModalBarrier'),
+                  ),
+
 
                   ElevatedButton(
                     onPressed: (){
