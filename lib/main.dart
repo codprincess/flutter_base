@@ -5,6 +5,7 @@ import 'package:flutter_base/AnimatedModalBarrierPage.dart';
 import 'package:flutter_base/AppPage.dart';
 import 'package:flutter_base/BorderPage.dart';
 import 'package:flutter_base/BottomAppBarPage.dart';
+import 'package:flutter_base/DecoratedBoxTransitionPage.dart';
 import 'package:flutter_base/ModalBarrierPage.dart';
 import 'package:flutter_base/BoxDecorationPage.dart';
 import 'package:flutter_base/CurvePage.dart';
@@ -191,6 +192,7 @@ class _MyAppState extends State<MyApp> {
               'AnimatedBuilder_Page':(context)=>AnimatedBuilderPage(),
               'AlignTransition_Page':(context)=>AlignTransitionPage(),
               'AnimatedModalBarrier_Page':(context)=>AnimatedModalBarrierPage(),
+              'DecoratedBoxTransition_Page':(context) => DecoratedBoxTransitionPage(),
 
             },
           );
@@ -631,6 +633,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'AnimatedModalBarrier_Page');
                     },
                     child: const Text('AnimatedModalBarrier'),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'DecoratedBoxTransition_Page');
+                    },
+                    child: const Text('DecoratedBoxTransition'),
                   ),
 
 
