@@ -10,9 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3d16082-1e09-4512-8f1c-93ccbafd59a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/RelativePositionedTransitionPage.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/RotationTransitionPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/PositionedTransitionPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/PositionedTransitionPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

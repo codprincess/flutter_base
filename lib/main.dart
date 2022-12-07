@@ -67,6 +67,7 @@ import 'InheritedWidgetPage.dart';
 import 'OffstagePage.dart';
 import 'PositionedPage.dart';
 import 'ProviderPage.dart';
+import 'RotationTransitionPage.dart';
 import 'RoutePage.dart';
 import 'SliverAppBarPage.dart';
 import 'SliverFillViewportPage.dart';
@@ -198,7 +199,8 @@ class _MyAppState extends State<MyApp> {
               'DecoratedBoxTransition_Page':(context) => DecoratedBoxTransitionPage(),
               'DefaultTextStyleTransition_page':(context) => DefaultTextStyleTransitionPage(),
               'PositionedTransition_page':(context) => PositionedTransitionPage(),
-              'RelativePositionedTransition_page':(context)=>RelativePositionedTransitionPage()
+              'RelativePositionedTransition_page':(context)=>RelativePositionedTransitionPage(),
+              'RotationTransition_Page':(context) => RotationTransitionPage(),
 
             },
           );
@@ -665,6 +667,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'RelativePositionedTransition_page');
                     },
                     child: const Text('RelativePositionedTransition'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'RotationTransition_Page');
+                    },
+                    child: const Text('RotationTransition'),
                   ),
 
 
