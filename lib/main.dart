@@ -24,6 +24,7 @@ import 'package:flutter_base/LoginPage.dart';
 import 'package:flutter_base/NestedScrollViewPage.dart';
 import 'package:flutter_base/PaddingPage.dart';
 import 'package:flutter_base/PageViewPage.dart';
+import 'package:flutter_base/PositionedTransitionPage.dart';
 import 'package:flutter_base/RowPage.dart';
 import 'package:flutter_base/ScaffoldPage.dart';
 import 'package:flutter_base/ScaleAnimationPage.dart';
@@ -195,6 +196,7 @@ class _MyAppState extends State<MyApp> {
               'AnimatedModalBarrier_Page':(context)=>AnimatedModalBarrierPage(),
               'DecoratedBoxTransition_Page':(context) => DecoratedBoxTransitionPage(),
               'DefaultTextStyleTransition_page':(context) => DefaultTextStyleTransitionPage(),
+              'PositionedTransition_page':(context) => PositionedTransitionPage(),
 
             },
           );
@@ -648,6 +650,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'DefaultTextStyleTransition_page');
                     },
                     child: const Text('DefaultTextStyleTransition'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'PositionedTransition_page');
+                    },
+                    child: const Text('PositionedTransition'),
                   ),
 
 
