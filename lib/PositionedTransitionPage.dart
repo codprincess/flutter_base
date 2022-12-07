@@ -19,6 +19,7 @@ class _PositionedTransitionPageState extends State<PositionedTransitionPage> wit
       vsync: this
     )..repeat(reverse: true);
 
+    //PositionedTransition 控制器
     _relativeRectTween = RelativeRectTween(
       begin: const RelativeRect.fromLTRB(100.0, 100.0, 100.0, 100.0),
       end:const RelativeRect.fromLTRB(20.0, 20.0, 20.0, 20.0)
