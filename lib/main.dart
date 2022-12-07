@@ -70,6 +70,7 @@ import 'PositionedPage.dart';
 import 'ProviderPage.dart';
 import 'RotationTransitionPage.dart';
 import 'RoutePage.dart';
+import 'SizeTransitionPage.dart';
 import 'SliverAppBarPage.dart';
 import 'SliverFillViewportPage.dart';
 import 'SliverGridPage.dart';
@@ -203,7 +204,7 @@ class _MyAppState extends State<MyApp> {
               'RelativePositionedTransition_page':(context)=>RelativePositionedTransitionPage(),
               'RotationTransition_Page':(context) => RotationTransitionPage(),
               'ScaleTransition_Page':(context) => ScaleTransitionPage(),
-
+              'SizeTransition_Page':(context) =>SizeTransitionPage()
 
             },
           );
@@ -683,6 +684,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('ScaleTransition'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SizeTransition_Page');
+                    },
+                    child: const Text('SizeTransition'),
+                  ),
+
 
 
 
