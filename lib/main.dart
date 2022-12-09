@@ -30,6 +30,7 @@ import 'package:flutter_base/RowPage.dart';
 import 'package:flutter_base/ScaffoldPage.dart';
 import 'package:flutter_base/ScaleAnimationPage.dart';
 import 'package:flutter_base/ScaleTransitionPage.dart';
+import 'package:flutter_base/SlideTransitionPage.dart';
 import 'package:flutter_base/SliverAnimatedListPage.dart';
 import 'package:flutter_base/SliverAnimatedOpacityPage.dart';
 import 'package:flutter_base/SliverFadeTransitionPage.dart';
@@ -204,8 +205,8 @@ class _MyAppState extends State<MyApp> {
               'RelativePositionedTransition_page':(context)=>RelativePositionedTransitionPage(),
               'RotationTransition_Page':(context) => RotationTransitionPage(),
               'ScaleTransition_Page':(context) => ScaleTransitionPage(),
-              'SizeTransition_Page':(context) =>SizeTransitionPage()
-
+              'SizeTransition_Page':(context) =>SizeTransitionPage(),
+              'SlideTransition_Page':(context) => SlideTransitionPage()
             },
           );
         },
@@ -690,6 +691,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('SizeTransition'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'SlideTransition_Page');
+                    },
+                    child: const Text('SlideTransition'),
+                  ),
+
 
 
 
