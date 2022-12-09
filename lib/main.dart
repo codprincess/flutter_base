@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/AnimatedAlignPage.dart';
 import 'package:flutter_base/AnimatedBuilderPage.dart';
 import 'package:flutter_base/AnimatedContainerPage.dart';
 import 'package:flutter_base/AnimatedListPage.dart';
@@ -209,6 +210,7 @@ class _MyAppState extends State<MyApp> {
               'SizeTransition_Page':(context) =>SizeTransitionPage(),
               'SlideTransition_Page':(context) => SlideTransitionPage(),
               'AnimatedContainer_Page':(context) =>AnimatedContainerPage(),
+              'AnimatedAlign_Page':(context) => AnimatedAlignPage()
             },
           );
         },
@@ -704,6 +706,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'AnimatedContainer_Page');
                     },
                     child: const Text('AnimatedContainer'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AnimatedAlign_Page');
+                    },
+                    child: const Text('AnimatedAlign'),
                   ),
 
 
