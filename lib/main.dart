@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/AnimatedBuilderPage.dart';
+import 'package:flutter_base/AnimatedContainerPage.dart';
 import 'package:flutter_base/AnimatedListPage.dart';
 import 'package:flutter_base/AnimatedModalBarrierPage.dart';
 import 'package:flutter_base/AppPage.dart';
@@ -206,7 +207,8 @@ class _MyAppState extends State<MyApp> {
               'RotationTransition_Page':(context) => RotationTransitionPage(),
               'ScaleTransition_Page':(context) => ScaleTransitionPage(),
               'SizeTransition_Page':(context) =>SizeTransitionPage(),
-              'SlideTransition_Page':(context) => SlideTransitionPage()
+              'SlideTransition_Page':(context) => SlideTransitionPage(),
+              'AnimatedContainer_Page':(context) =>AnimatedContainerPage(),
             },
           );
         },
@@ -697,6 +699,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('SlideTransition'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AnimatedContainer_Page');
+                    },
+                    child: const Text('AnimatedContainer'),
+                  ),
+
 
 
 
