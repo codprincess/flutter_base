@@ -11,6 +11,7 @@ import 'package:flutter_base/BorderPage.dart';
 import 'package:flutter_base/BottomAppBarPage.dart';
 import 'package:flutter_base/DecoratedBoxTransitionPage.dart';
 import 'package:flutter_base/DefaultTextStyleTransitionPage.dart';
+import 'package:flutter_base/HeroPage.dart';
 import 'package:flutter_base/ModalBarrierPage.dart';
 import 'package:flutter_base/BoxDecorationPage.dart';
 import 'package:flutter_base/CurvePage.dart';
@@ -214,7 +215,8 @@ class _MyAppState extends State<MyApp> {
               'AnimatedContainer_Page':(context) =>AnimatedContainerPage(),
               'AnimatedAlign_Page':(context) => AnimatedAlignPage(),
               'AnimatedOpacity_Page':(context) => AnimatedOpacityPage(),
-              'AnimatedCrossFade_Page':(context) =>AnimatedCrossFadePage()
+              'AnimatedCrossFade_Page':(context) =>AnimatedCrossFadePage(),
+              'Hero_Page':(context) => HeroPage(),
             },
           );
         },
@@ -730,7 +732,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('AnimatedCrossFade'),
                   ),
-
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Hero_Page');
+                    },
+                    child: const Text('Hero动画'),
+                  ),
 
                   ElevatedButton(
                     onPressed: (){
