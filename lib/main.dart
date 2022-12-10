@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base/AnimatedAlignPage.dart';
 import 'package:flutter_base/AnimatedBuilderPage.dart';
 import 'package:flutter_base/AnimatedContainerPage.dart';
+import 'package:flutter_base/AnimatedCrossFadePage.dart';
 import 'package:flutter_base/AnimatedListPage.dart';
 import 'package:flutter_base/AnimatedModalBarrierPage.dart';
 import 'package:flutter_base/AnimatedOpacityPage.dart';
@@ -213,6 +214,7 @@ class _MyAppState extends State<MyApp> {
               'AnimatedContainer_Page':(context) =>AnimatedContainerPage(),
               'AnimatedAlign_Page':(context) => AnimatedAlignPage(),
               'AnimatedOpacity_Page':(context) => AnimatedOpacityPage(),
+              'AnimatedCrossFade_Page':(context) =>AnimatedCrossFadePage()
             },
           );
         },
@@ -722,8 +724,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('AnimatedOpacity'),
                   ),
-
-
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AnimatedCrossFade_Page');
+                    },
+                    child: const Text('AnimatedCrossFade'),
+                  ),
 
 
                   ElevatedButton(
