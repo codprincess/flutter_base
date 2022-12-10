@@ -4,6 +4,7 @@ import 'package:flutter_base/AnimatedBuilderPage.dart';
 import 'package:flutter_base/AnimatedContainerPage.dart';
 import 'package:flutter_base/AnimatedListPage.dart';
 import 'package:flutter_base/AnimatedModalBarrierPage.dart';
+import 'package:flutter_base/AnimatedOpacityPage.dart';
 import 'package:flutter_base/AppPage.dart';
 import 'package:flutter_base/BorderPage.dart';
 import 'package:flutter_base/BottomAppBarPage.dart';
@@ -210,7 +211,8 @@ class _MyAppState extends State<MyApp> {
               'SizeTransition_Page':(context) =>SizeTransitionPage(),
               'SlideTransition_Page':(context) => SlideTransitionPage(),
               'AnimatedContainer_Page':(context) =>AnimatedContainerPage(),
-              'AnimatedAlign_Page':(context) => AnimatedAlignPage()
+              'AnimatedAlign_Page':(context) => AnimatedAlignPage(),
+              'AnimatedOpacity_Page':(context) => AnimatedOpacityPage(),
             },
           );
         },
@@ -714,7 +716,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const Text('AnimatedAlign'),
                   ),
 
-
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AnimatedOpacity_Page');
+                    },
+                    child: const Text('AnimatedOpacity'),
+                  ),
 
 
 
