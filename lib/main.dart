@@ -35,6 +35,7 @@ import 'package:flutter_base/RowPage.dart';
 import 'package:flutter_base/ScaffoldPage.dart';
 import 'package:flutter_base/ScaleAnimationPage.dart';
 import 'package:flutter_base/ScaleTransitionPage.dart';
+import 'package:flutter_base/SequencePage.dart';
 import 'package:flutter_base/SlideTransitionPage.dart';
 import 'package:flutter_base/SliverAnimatedListPage.dart';
 import 'package:flutter_base/SliverAnimatedOpacityPage.dart';
@@ -217,6 +218,7 @@ class _MyAppState extends State<MyApp> {
               'AnimatedOpacity_Page':(context) => AnimatedOpacityPage(),
               'AnimatedCrossFade_Page':(context) =>AnimatedCrossFadePage(),
               'Hero_Page':(context) => HeroPage(),
+              'Sequence_Page':(context) => SequencePage(),
             },
           );
         },
@@ -738,6 +740,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('Hero动画'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Sequence_Page');
+                    },
+                    child: const Text('交错/序列动画'),
+                  ),
+
 
                   ElevatedButton(
                     onPressed: (){
