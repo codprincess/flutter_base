@@ -85,6 +85,7 @@ import 'SliverGridPage.dart';
 import 'SliverPrototypeExtentListPage.dart';
 import 'SliverVisibilityPage.dart';
 import 'StreamBuilderPage.dart';
+import 'TransformPage.dart';
 import 'VisibilityPage.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'dart:convert';
@@ -221,6 +222,7 @@ class _MyAppState extends State<MyApp> {
               'Hero_Page':(context) => HeroPage(),
               'Sequence_Page':(context) => SequencePage(),
               'AnimatedSwitcher_Page':(context) => AnimatedSwitcherPage(),
+              'Transform_Page':(context) => TransformPage()
 
             },
           );
@@ -630,6 +632,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'Tween_page');
                     },
                     child: const Text('Tween'),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Transform_Page');
+                    },
+                    child: const Text('Transform'),
                   ),
                   ElevatedButton(
                     onPressed: (){
