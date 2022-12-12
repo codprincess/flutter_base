@@ -6,6 +6,7 @@ import 'package:flutter_base/AnimatedCrossFadePage.dart';
 import 'package:flutter_base/AnimatedListPage.dart';
 import 'package:flutter_base/AnimatedModalBarrierPage.dart';
 import 'package:flutter_base/AnimatedOpacityPage.dart';
+import 'package:flutter_base/AnimatedSwitcherPage.dart';
 import 'package:flutter_base/AppPage.dart';
 import 'package:flutter_base/BorderPage.dart';
 import 'package:flutter_base/BottomAppBarPage.dart';
@@ -219,6 +220,8 @@ class _MyAppState extends State<MyApp> {
               'AnimatedCrossFade_Page':(context) =>AnimatedCrossFadePage(),
               'Hero_Page':(context) => HeroPage(),
               'Sequence_Page':(context) => SequencePage(),
+              'AnimatedSwitcher_Page':(context) => AnimatedSwitcherPage(),
+
             },
           );
         },
@@ -745,6 +748,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'Sequence_Page');
                     },
                     child: const Text('交错/序列动画'),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'AnimatedSwitcher_Page');
+                    },
+                    child: const Text('AnimatedSwitcher'),
                   ),
 
 
