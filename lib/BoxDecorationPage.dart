@@ -11,6 +11,80 @@ class BoxDecorationPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
+              const SizedBox(height: 30.0,),
+              Container(
+                  alignment: Alignment.bottomRight,
+                  color: Colors.blue,
+                  width: 150.0,
+                  height: 100.0,
+                  child: const Text("Hello Container")
+              ),
+              const SizedBox(height: 30.0,),
+              Container(
+                transform: Matrix4.rotationZ(0.2),
+                width: 200,
+                height: 100,
+                color: Colors.green,
+                child: const Text('Hello Container'),
+              ),
+              const SizedBox(height: 120.0,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height:60.0,
+                    width: 100.0,
+                    color:Colors.green,
+                    transform: Matrix4.rotationZ(0.5),
+                    transformAlignment: Alignment.topLeft,
+                    child:const Center(child:Text("topLeft")),
+                  ),
+                  Container(
+                    height:60.0,
+                    width: 100.0,
+                    color:Colors.blue,
+                    transform: Matrix4.rotationZ(0.5),
+                    transformAlignment: Alignment.topCenter,
+                    child:const Center(child:Text("topCenter")),
+                  ),
+                  Container(
+                    height:60.0,
+                    width: 100.0,
+                    color:Colors.red,
+                    transform: Matrix4.rotationZ(0.5),
+                    transformAlignment: Alignment.topRight,
+                    child:const Center(child:Text("topRight")),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 100.0,),
+              Container(
+                foregroundDecoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.red),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.purple,
+                      blurRadius: 5.0,
+                      spreadRadius: 5.0
+                    )
+                  ]
+                ),
+                width: 200,
+                height: 100,
+              ),
+
+              const SizedBox(height: 100.0,),
+              Container(
+
+                  constraints: const BoxConstraints.tightForFinite(width: 200.0,height:100.0),
+                  alignment: Alignment.center,
+                  color: Colors.blue,
+                  child: const Text("Hello Container")
+              ),
+
               Container(
                 padding: const EdgeInsets.only(left: 30,right: 30,top: 10,bottom: 10),
                 decoration: const BoxDecoration(
