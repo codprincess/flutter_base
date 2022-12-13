@@ -73,6 +73,7 @@ import 'FlowViewPage.dart';
 import 'FutureBuilderPage.dart';
 import 'GestureRecognizerPage.dart';
 import 'InheritedWidgetPage.dart';
+import 'MatPage.dart';
 import 'OffstagePage.dart';
 import 'PositionedPage.dart';
 import 'ProviderPage.dart';
@@ -222,7 +223,8 @@ class _MyAppState extends State<MyApp> {
               'Hero_Page':(context) => HeroPage(),
               'Sequence_Page':(context) => SequencePage(),
               'AnimatedSwitcher_Page':(context) => AnimatedSwitcherPage(),
-              'Transform_Page':(context) => TransformPage()
+              'Transform_Page':(context) => TransformPage(),
+              'Matrix4_Page':(context) => Matrix4Page()
 
             },
           );
@@ -764,6 +766,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'AnimatedSwitcher_Page');
                     },
                     child: const Text('AnimatedSwitcher'),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'Matrix4_Page');
+                    },
+                    child: const Text('Matrix4'),
                   ),
 
 
