@@ -52,6 +52,7 @@ import 'package:flutter_base/TestPage.dart';
 import 'package:flutter_base/TextPage.dart';
 import 'package:flutter_base/SliverOpacityPage.dart';
 import 'package:flutter_base/ThemePage.dart';
+import 'package:flutter_base/TweenAnimationBuilderPage.dart';
 import 'package:flutter_base/TweenPage.dart';
 import 'package:flutter_base/WillPopScopePage.dart';
 import 'package:flutter_base/dark_theme_styles.dart';
@@ -224,8 +225,8 @@ class _MyAppState extends State<MyApp> {
               'Sequence_Page':(context) => SequencePage(),
               'AnimatedSwitcher_Page':(context) => AnimatedSwitcherPage(),
               'Transform_Page':(context) => TransformPage(),
-              'Matrix4_Page':(context) => Matrix4Page()
-
+              'Matrix4_Page':(context) => Matrix4Page(),
+              'TweenAnimationBuilder_Page':(context) => TweenAnimationBuilderPage(),
             },
           );
         },
@@ -636,6 +637,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const Text('Tween'),
                   ),
 
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'TweenAnimationBuilder_Page');
+                    },
+                    child: const Text('TweenAnimationBuilder'),
+                  ),
                   ElevatedButton(
                     onPressed: (){
                       Navigator.pushNamed(context, 'Transform_Page');
