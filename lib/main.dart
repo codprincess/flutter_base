@@ -73,6 +73,7 @@ import 'DatePickerPage2.dart';
 import 'FlowViewPage.dart';
 import 'FutureBuilderPage.dart';
 import 'GestureRecognizerPage.dart';
+import 'GradientButtonPage.dart';
 import 'InheritedWidgetPage.dart';
 import 'MatPage.dart';
 import 'OffstagePage.dart';
@@ -227,6 +228,7 @@ class _MyAppState extends State<MyApp> {
               'Transform_Page':(context) => TransformPage(),
               'Matrix4_Page':(context) => Matrix4Page(),
               'TweenAnimationBuilder_Page':(context) => TweenAnimationBuilderPage(),
+              'GradientButton_Page':(context) => GradientButtonPage()
             },
           );
         },
@@ -791,9 +793,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   ElevatedButton(
                     onPressed: (){
-                      Navigator.pushNamed(context, 'test_page');
+                      Navigator.pushNamed(context, 'GradientButton_Page');
                     },
-                    child: const Text('测试页面214535634'),
+                    child: const Text('自定义组件测试'),
                   ),
                   ElevatedButton(
                     onPressed: (){
