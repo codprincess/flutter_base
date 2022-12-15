@@ -13,6 +13,7 @@ import 'package:flutter_base/BottomAppBarPage.dart';
 import 'package:flutter_base/DecoratedBoxTransitionPage.dart';
 import 'package:flutter_base/DefaultTextStyleTransitionPage.dart';
 import 'package:flutter_base/HeroPage.dart';
+import 'package:flutter_base/InkWellPage.dart';
 import 'package:flutter_base/ModalBarrierPage.dart';
 import 'package:flutter_base/BoxDecorationPage.dart';
 import 'package:flutter_base/CurvePage.dart';
@@ -228,7 +229,8 @@ class _MyAppState extends State<MyApp> {
               'Transform_Page':(context) => TransformPage(),
               'Matrix4_Page':(context) => Matrix4Page(),
               'TweenAnimationBuilder_Page':(context) => TweenAnimationBuilderPage(),
-              'GradientButton_Page':(context) => GradientButtonPage()
+              'GradientButton_Page':(context) => GradientButtonPage(),
+              'InkWell_Page':(context) => InkWellPage(),
             },
           );
         },
@@ -426,6 +428,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'Positioned_Page');
                     },
                     child: const Text('Positioned'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'InkWell_Page');
+                    },
+                    child: const Text('InkWell'),
                   ),
 
                   ElevatedButton(
