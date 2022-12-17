@@ -213,7 +213,7 @@
     },
     {
       "name": "provider",
-      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/provider-6.0.4",
+      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/provider-6.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -237,7 +237,7 @@
     },
     {
       "name": "shared_preferences_linux",
-      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_linux-2.1.1",
+      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_linux-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -261,7 +261,7 @@
     },
     {
       "name": "shared_preferences_windows",
-      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_windows-2.1.1",
+      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_windows-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -338,7 +338,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-11-29T15:35:28.681020Z",
+  "generated": "2022-12-15T10:06:48.020793Z",
   "generator": "pub",
-  "generatorVersion": "2.18.0"
+  "generatorVersion": "2.18.5"
 }

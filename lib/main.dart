@@ -68,6 +68,7 @@ import 'AlignTransitionPage.dart';
 import 'AnimatedWidgetPage.dart';
 import 'AnimationPage.dart';
 import 'CurvedAnimationPage.dart';
+import 'CustomPaintPage.dart';
 import 'CustomScrollViewPage.dart';
 import 'DatePickerPage.dart';
 import 'DatePickerPage2.dart';
@@ -231,6 +232,7 @@ class _MyAppState extends State<MyApp> {
               'TweenAnimationBuilder_Page':(context) => TweenAnimationBuilderPage(),
               'GradientButton_Page':(context) => GradientButtonPage(),
               'InkWell_Page':(context) => InkWellPage(),
+              'CustomPaint_Page':(context) => CustomPaintPage()
             },
           );
         },
@@ -778,6 +780,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const Text('交错/序列动画'),
                   ),
 
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'CustomPaint_Page');
+                    },
+                    child: const Text('自定义动画'),
+                  ),
                   ElevatedButton(
                     onPressed: (){
                       Navigator.pushNamed(context, 'AnimatedSwitcher_Page');

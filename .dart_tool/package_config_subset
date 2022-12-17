@@ -128,8 +128,8 @@ file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/process-4.2.4/
 file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/process-4.2.4/lib/
 provider
 2.12
-file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/provider-6.0.4/
-file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/provider-6.0.4/lib/
+file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/provider-6.0.5/
+file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/provider-6.0.5/lib/
 shared_preferences
 2.14
 file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-2.0.15/
@@ -144,8 +144,8 @@ file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_ios-2
 file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_ios-2.1.1/lib/
 shared_preferences_linux
 2.12
-file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_linux-2.1.1/
-file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_linux-2.1.1/lib/
+file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_linux-2.1.2/
+file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_linux-2.1.2/lib/
 shared_preferences_macos
 2.12
 file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_macos-2.0.4/
@@ -160,8 +160,8 @@ file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_web-2
 file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_web-2.0.4/lib/
 shared_preferences_windows
 2.12
-file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_windows-2.1.1/
-file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_windows-2.1.1/lib/
+file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_windows-2.1.2/
+file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_windows-2.1.2/lib/
 source_span
 2.14
 file:///opt/flutter/.pub-cache/hosted/pub.flutter-io.cn/source_span-1.9.0/
