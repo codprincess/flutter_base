@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'dart:ui';
+
 
 import 'package:flutter/material.dart';
 
@@ -21,10 +21,24 @@ class _CustomPaintPageState extends State<CustomPaintPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 30,),
+            // CustomPaint(
+            //   painter: MyPainter(),
+            //   size: const Size(200,200),
+            // ),
             CustomPaint(
-              painter: MyPainter(),
-              size: const Size(200,200),
+              size: const Size(250, 230),
+              painter: MyPainterHeart(Colors.red,Colors.transparent,0.0),
             ),
+            CustomPaint(
+              size: const Size(200, 160),
+              painter: MyPainterHeart(Colors.red,Colors.green,10.0),
+            ),
+            CustomPaint(
+              size: const Size(200, 240),
+              painter: MyPainterHeart(Colors.green,Colors.black,1.0),
+            ),
+
+
             // CustomPaint(
             //   painter: MyPainter2(),
             //   size: const Size(100,100),
@@ -125,6 +139,8 @@ class MyPainter3 extends CustomPainter{
   }
 }
 
+
+
 //五彩棋盘
 class MyPainter4 extends CustomPainter{
   @override
@@ -203,6 +219,59 @@ class MyPainter4 extends CustomPainter{
     return true;
   }
 }
+
+class MyPainterHeart extends CustomPainter{
+  //爱心颜色
+  final Color bodyColor;
+  //爱心边框颜色
+  final Color borderColor;
+  //边框宽度
+  final double borderWidth;
+  MyPainterHeart(
+    this.bodyColor,
+    this.borderColor,
+    this.borderWidth,
+
+  );
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint body = Paint();
+    body
+      ..color = bodyColor
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 0;
+    final Paint border = Paint();
+    border
+      ..color = borderColor
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = borderWidth;
+
+    final double w = size.width;
+    final double h = size.height;
+    final Path path = Path();
+    path
+      ..moveTo(0.5*w, 0.4*h)
+      ..cubicTo(0.2*w, 0.1*h, -0.25*w, 0.6*h, 0.5*w, h)
+      ..moveTo(0.5*w, 0.4*h)
+      ..cubicTo(0.8*w, 0.1*h, 1.25*w, 0.6*h, 0.5*w, h);
+    canvas.drawPath(path, body);
+    canvas.drawPath(path, border);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    // TODO: implement shouldRepaint
+    //throw UnimplementedError();
+    return true;
+  }
+
+
+}
+
+
+
+
 
 
 
