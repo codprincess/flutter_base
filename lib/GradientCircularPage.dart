@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/GradientCircular.dart';
 
+import 'TurnBox.dart';
+
 class GradientCircularPage extends StatefulWidget {
   const GradientCircularPage({Key? key}) : super(key: key);
 
@@ -12,7 +14,8 @@ class GradientCircularPage extends StatefulWidget {
 
 class _GradientCircularPageState extends State<GradientCircularPage> with TickerProviderStateMixin {
   late AnimationController _animationController;
-
+  //使用 TurnBox
+  double _turns = .0;
   @override
   void initState() {
     // TODO: implement initState
@@ -138,6 +141,28 @@ class _GradientCircularPageState extends State<GradientCircularPage> with Ticker
                                   ),
                                 ),
                               ),
+                            ),
+
+                            TurnBox(
+                              turns:_turns,
+                              speed: 500,
+                              child: const Icon(Icons.refresh,size: 50,),
+                            ),
+                            ElevatedButton(
+                              child: const Text("顺时针旋转1/5圈"),
+                              onPressed: () {
+                                setState(() {
+                                  _turns += .2;
+                                });
+                              },
+                            ),
+                            ElevatedButton(
+                              child: const Text("逆时针旋转1/5圈"),
+                              onPressed: () {
+                                setState(() {
+                                  _turns -= .2;
+                                });
+                              },
                             )
                           ],
                         )
