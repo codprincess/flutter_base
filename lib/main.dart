@@ -69,6 +69,7 @@ import 'AlignTransitionPage.dart';
 import 'AnimatedWidgetPage.dart';
 import 'AnimationPage.dart';
 import 'CurvedAnimationPage.dart';
+import 'CustomCheckboxPage.dart';
 import 'CustomPaintPage.dart';
 import 'CustomScrollViewPage.dart';
 import 'DatePickerPage.dart';
@@ -236,7 +237,8 @@ class _MyAppState extends State<MyApp> {
               'InkWell_Page':(context) => InkWellPage(),
               'CustomPaint_Page':(context) => CustomPaintPage(),
               'GradientCircular_Page':(context) => GradientCircularPage(),
-              'RotatedBox_Page':(context) => RotatedBoxPage()
+              'RotatedBox_Page':(context) => RotatedBoxPage(),
+              'CustomCheckbox_Page':(context) => CustomCheckboxPage(),
             },
           );
         },
@@ -670,6 +672,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, 'RotatedBox_Page');
                     },
                     child: const Text('RotatedBox'),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'CustomCheckbox_Page');
+                    },
+                    child: const Text('CustomCheckboxPage'),
                   ),
 
                   ElevatedButton(
