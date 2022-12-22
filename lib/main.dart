@@ -33,6 +33,7 @@ import 'package:flutter_base/PaddingPage.dart';
 import 'package:flutter_base/PageViewPage.dart';
 import 'package:flutter_base/PositionedTransitionPage.dart';
 import 'package:flutter_base/RelativePositionedTransitionPage.dart';
+import 'package:flutter_base/RotatedBoxPage.dart';
 import 'package:flutter_base/RowPage.dart';
 import 'package:flutter_base/ScaffoldPage.dart';
 import 'package:flutter_base/ScaleAnimationPage.dart';
@@ -76,6 +77,7 @@ import 'FlowViewPage.dart';
 import 'FutureBuilderPage.dart';
 import 'GestureRecognizerPage.dart';
 import 'GradientButtonPage.dart';
+import 'GradientCircularPage.dart';
 import 'InheritedWidgetPage.dart';
 import 'MatPage.dart';
 import 'OffstagePage.dart';
@@ -232,7 +234,9 @@ class _MyAppState extends State<MyApp> {
               'TweenAnimationBuilder_Page':(context) => TweenAnimationBuilderPage(),
               'GradientButton_Page':(context) => GradientButtonPage(),
               'InkWell_Page':(context) => InkWellPage(),
-              'CustomPaint_Page':(context) => CustomPaintPage()
+              'CustomPaint_Page':(context) => CustomPaintPage(),
+              'GradientCircular_Page':(context) => GradientCircularPage(),
+              'RotatedBox_Page':(context) => RotatedBoxPage()
             },
           );
         },
@@ -663,6 +667,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   ElevatedButton(
                     onPressed: (){
+                      Navigator.pushNamed(context, 'RotatedBox_Page');
+                    },
+                    child: const Text('RotatedBox'),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: (){
                       Navigator.pushNamed(context, 'ScaleAnimation_page');
                     },
                     child: const Text('图片放大效果'),
@@ -799,6 +810,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: const Text('Matrix4'),
                   ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, 'GradientCircular_Page');
+                    },
+                    child: const Text('GradientCircular'),
+                  ),
+
+
 
 
                   ElevatedButton(
